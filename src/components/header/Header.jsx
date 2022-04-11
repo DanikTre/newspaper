@@ -103,6 +103,7 @@ function Header({
   headerText,
   arrowdisplay,
   txtdisplay,
+  SelectButtonsDisplay,
   width,
   options1,
   options2,
@@ -131,11 +132,13 @@ function Header({
         <SearchBar />
         <TopicThisWeekButtons>
           <StyledSelectButton
+            display={SelectButtonsDisplay}
             options={options1}
             value={value1}
             onChange={onChange1}
           />
           <SelectButton
+            display={SelectButtonsDisplay}
             width={"126px"}
             options={options2}
             value={value2}

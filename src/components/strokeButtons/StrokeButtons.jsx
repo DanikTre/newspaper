@@ -10,6 +10,8 @@ const StrokeButtonsWrapper = styled.div`
   height: 100%;
   right: 245px;
 
+  pointer-events: none;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,6 +34,7 @@ const StrokeButton1 = styled.div`
       border-width: 0 1px 1px 0;
     }
   }
+
   cursor: pointer;
 `;
 
@@ -53,6 +56,7 @@ const StrokeButton2 = styled.div`
       border-width: 0 1px 1px 0;
     }
   }
+  pointer-events: visible;
   cursor: pointer;
 `;
 

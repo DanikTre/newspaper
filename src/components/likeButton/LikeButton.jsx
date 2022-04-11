@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
 import LikeImage from "./components/LikeImage";
-import LikeButtonState from "../../features/likeButtonState/LikeButtonState";
 
 const LikeWrapper = styled.button`
   display: flex;

@@ -18,13 +18,17 @@ export const Wrapper = styled.div`
 export const LeftSideWrapper = styled.div`
   width: 100%;
   max-height: 100vh;
-  margin-right: 188px;
+  /* padding-right: 188px; */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
 
   overflow-y: scroll;
+  scroll-behavior: smooth;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   padding-top: 46px;
 `;
@@ -34,8 +38,7 @@ export const RightSideWrapper = styled.div`
   align-items: center;
   justify-content: center;
 
-  width: 188px;
-  height: 100%;
+  height: 100vh;
 
   border-left: 1px solid #c4c4c4;
 

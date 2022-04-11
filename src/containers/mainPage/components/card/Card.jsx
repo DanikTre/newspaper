@@ -1,14 +1,13 @@
-import styled from "styled-components";
-import ReadMoreButton from "../../../../components/readMoreButton/ReadMoreButton";
-import LikeButton from "../../../../components/likeButton/LikeButton";
 import { Link } from "react-router-dom";
 import { getPath, injectPathParams, VIEW } from "../../../../routes/paths";
 
+import styled from "styled-components";
+import ReadMoreButton from "../../../../components/readMoreButton/ReadMoreButton";
+import LikeButton from "../../../../components/likeButton/LikeButton";
+
 const CardWrapper = styled.div`
-  /* width: ${(props) => props.width}; */
   width: 100%;
-  margin-bottom: ${(props) => props.margin};
-  /* margin: 0 24px 24px 0; */
+  margin-bottom: ${({ margin }) => margin || "24px"};
 
   box-shadow: 0px 4px 8px #828282;
   border-radius: 20px;
@@ -53,29 +52,34 @@ const ButtonLikeWrapper = styled.div`
   margin-top: 13px;
 `;
 
-function Card(props) {
+function Card({
+  className,
+  width,
+  margin,
+  value,
+  src,
+  name,
+  state,
+  handleLike,
+}) {
   return (
-    <CardWrapper
-      className={props.className}
-      width={props.width}
-      margin={props.margin}
-    >
+    <CardWrapper className={className} width={width} margin={margin}>
       <Link
-        to={injectPathParams(getPath(VIEW.CARD), { id: props.value })}
+        to={injectPathParams(getPath(VIEW.CARD), { id: value })}
         style={{ textDecoration: "none" }}
       >
-        <Card1Img src={props.src} alt="Card Image" />
+        <Card1Img src={src} alt="Card Image" />
       </Link>
       <InsideCardWrapper>
-        <Card1Txt>{props.name}</Card1Txt>
+        <Card1Txt>{name}</Card1Txt>
         <ButtonLikeWrapper>
           <Link
-            to={injectPathParams(getPath(VIEW.CARD), { id: props.value })}
+            to={injectPathParams(getPath(VIEW.CARD), { id: value })}
             style={{ textDecoration: "none" }}
           >
             <ReadMoreButton>Read this</ReadMoreButton>
           </Link>
-          <LikeButton state={props.state} handleLike={props.handleLike} />
+          <LikeButton state={state} handleLike={handleLike} />
         </ButtonLikeWrapper>
       </InsideCardWrapper>
     </CardWrapper>

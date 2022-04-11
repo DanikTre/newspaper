@@ -1,12 +1,11 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // import { defaultProps } from "react-select/dist/declarations/src/Select";
 import styled from "styled-components";
 import CloseOnClick from "../../features/clouseOnClick/CloseOnClick";
-import { PATH } from "../../App";
 
 const ButtonWrapper = styled.div`
+  display: ${({ display }) => display || "none"};
   width: ${({ width }) => width || "150px"};
   height: 32px;
   position: relative;
@@ -144,7 +143,7 @@ const GradientDiv = styled.div`
   border-radius: 8px;
 `;
 
-function SelectButton({ width, options, className, value, onChange }) {
+function SelectButton({ display, width, options, className, value, onChange }) {
   const [opened, setOpened] = useState(false);
   const [selected, setSelected] = useState(options[0].value);
   // const handleClick = (value) => {
@@ -206,6 +205,7 @@ function SelectButton({ width, options, className, value, onChange }) {
   return (
     <CloseOnClick outsideHandler={outsideHandler}>
       <ButtonWrapper
+        display={display}
         tabIndex={0}
         onKeyUp={onKeyUp}
         className={className}

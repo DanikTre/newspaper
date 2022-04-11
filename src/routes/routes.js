@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 
-import MainPage from "../containers/mainPage/MainPage.js";
-import CardPage from "../containers/cardPage/CardPage.js";
+import MainPage from "../containers/mainPage/MainPage.jsx";
+import CardPage from "../containers/cardPage/CardPage.jsx";
 import ArtPage from "../containers/artPage/ArtPage";
 
 import Img1 from "../containers/mainPage/components/card/assets/CardImg1.png";

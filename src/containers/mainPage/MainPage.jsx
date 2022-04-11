@@ -31,6 +31,7 @@ const MainPage = ({
   return (
     <CenteredWrapper>
       <Header
+        SelectButtonsDisplay="block"
         headerText="Daily Resources"
         options1={options1}
         value1={value1}
@@ -49,7 +50,6 @@ const MainPage = ({
               key={i.value}
               name={i.name}
               src={i.src}
-              margin="24px"
             />
           ))}
         </ColumnCardWrapper>
@@ -62,7 +62,6 @@ const MainPage = ({
               key={i.value}
               name={i.name}
               src={i.src}
-              margin="24px"
             />
           ))}
         </ColumnCardWrapper>
@@ -75,7 +74,6 @@ const MainPage = ({
               key={i.value}
               name={i.name}
               src={i.src}
-              margin="24px"
             />
           ))}
         </ColumnCardWrapper>

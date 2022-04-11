@@ -5,6 +5,7 @@ import LogOutButton from "./components/LogOutButton";
 
 const CenteredWrapper = styled.div`
   height: 100vh;
+  width: 188px;
   min-height: 90%;
   display: flex;
   flex-direction: column;
