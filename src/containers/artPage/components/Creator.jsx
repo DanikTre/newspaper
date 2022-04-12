@@ -4,7 +4,7 @@ import FollowButton from "../../../components/followButton/FollowButton";
 
 const PostWrapper = styled.div`
   width: 400px;
-  margin: 0 0 0 32px;
+  margin: 0 0 16px 32px;
 
   display: flex;
   align-items: center;
@@ -61,24 +61,16 @@ const RightSideDiv = styled.div`
   justify-content: center;
 `;
 
-function Creator({
-  PostImg,
-  Name,
-  PostTxt,
-  PostDate,
-  PostBred,
-  handleClick,
-  count,
-}) {
+function Creator({ postImg, name, postTxt, followState, handleFollow }) {
   return (
     <PostWrapper>
-      <Image1 src={PostImg} alt="Post Image" />
+      <Image1 src={postImg} alt="Post Image" />
       <CenterDiv>
-        <PageTxt>{Name}</PageTxt>
-        <TextRow>{PostTxt}</TextRow>
+        <PageTxt>{name}</PageTxt>
+        <TextRow>{postTxt}</TextRow>
       </CenterDiv>
       <RightSideDiv>
-        <FollowButton />
+        <FollowButton followState={followState} handleFollow={handleFollow} />
       </RightSideDiv>
     </PostWrapper>
   );

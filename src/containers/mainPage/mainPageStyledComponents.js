@@ -1,10 +1,8 @@
 import styled from "styled-components";
 
 export const CenteredWrapper = styled.div`
-  /* position: relative; */
   width: 87%;
-  padding: 0 85px 0 77px;
-  /* width: 90%; */
+  padding: 0 85px 100px 77px;
 
   display: flex;
   flex-direction: column;

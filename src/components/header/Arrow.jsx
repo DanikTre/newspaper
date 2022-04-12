@@ -9,7 +9,7 @@ const ArrowImg = ({ selected }) => {
     >
       <path
         d="M5 9L1 4.98952H16H1L5 1"
-        stroke="#555770"
+        stroke="#8F93A1"
         strokeLinecap="round"
         strokeLinejoin="round"
       />

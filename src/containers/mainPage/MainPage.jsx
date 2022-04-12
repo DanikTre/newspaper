@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   CenteredWrapper,
   CardsWrapper,
@@ -14,31 +16,67 @@ const StyledCard = styled(Card)`
   margin: 0 24px 24px 0;
 `;
 
-const MainPage = ({
-  handleLike,
-  likeState,
-  headerText,
-  options1,
-  value1,
-  onChange1,
-  options2,
-  value2,
-  onChange2,
-  firstPart,
-  secondPart,
-  thirdPart,
-}) => {
+//
+//
+const MainPage = ({ cardList, topicOptions, weekOptions }) => {
+  //
+  // Select buttons option state
+
+  const [value1, setValue1] = useState("0");
+  const [value2, setValue2] = useState("0");
+
+  // Like button state
+
+  const defaultLikeState = cardList.map((card) => ({
+    id: card.value,
+    state: card.state,
+    count: card.count,
+  }));
+
+  const [likeState, setLikeState] = useState(defaultLikeState);
+  const [likeCount, setLikeCount] = useState(defaultLikeState);
+
+  const handleLike = (id) => {
+    // debugger;
+    setLikeState((currentState) => {
+      const index = currentState.findIndex((el) => el.id === id);
+      const copy = [...currentState];
+      copy[index].state = !copy[index].state;
+      return copy;
+    });
+    setLikeCount((currentState) => {
+      const index = currentState.findIndex((el) => el.id === id);
+      const copy = [...currentState];
+      if (currentState.state === false) {
+        copy[index].count = copy[index].count++;
+      } else {
+        copy[index].count = copy[index].count--;
+      }
+      return copy;
+    });
+  };
+
+  // Card array split
+
+  const threePartIndex = Math.floor(cardList.length / 3);
+
+  const thirdPart = cardList.splice(-threePartIndex);
+  const secondPart = cardList.splice(-threePartIndex);
+  const firstPart = cardList;
+
+  console.log(firstPart);
+
   return (
     <CenteredWrapper>
       <Header
         SelectButtonsDisplay="block"
         headerText="Daily Resources"
-        options1={options1}
+        topicOptions={topicOptions}
         value1={value1}
-        onChange1={onChange1}
-        options2={options2}
+        onChange1={setValue1}
+        options2={weekOptions}
         value2={value2}
-        onChange2={onChange2}
+        onChange2={setValue2}
       ></Header>
       <CardsWrapper>
         <ColumnCardWrapper width="303px" margin="24px">
@@ -46,6 +84,7 @@ const MainPage = ({
             <Card
               handleLike={() => handleLike(i.value)}
               state={likeState.find((like) => like.id === i.value).state}
+              count={likeCount.find((like) => like.id === i.value).count}
               value={i.value}
               key={i.value}
               name={i.name}
@@ -58,6 +97,7 @@ const MainPage = ({
             <StyledCard
               handleLike={() => handleLike(i.value)}
               state={likeState.find((like) => like.id === i.value).state}
+              count={likeCount.find((like) => like.id === i.value).count}
               value={i.value}
               key={i.value}
               name={i.name}
@@ -70,6 +110,7 @@ const MainPage = ({
             <Card
               handleLike={() => handleLike(i.value)}
               state={likeState.find((like) => like.id === i.value).state}
+              count={likeCount.find((like) => like.id === i.value).count}
               value={i.value}
               key={i.value}
               name={i.name}

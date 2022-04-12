@@ -6,8 +6,6 @@ import Creator from "./Creator";
 import PostImg1 from "./assets/Img1.png";
 import PostImg2 from "./assets/Img2.png";
 import PostImg3 from "./assets/Img3.jpg";
-import AvatarImg2 from "./assets/AvatarImg2.png";
-import AvatarImg3 from "./assets/AvatarImg3.jpg";
 
 const Wrapper = styled.div`
   display: flex;
@@ -35,7 +33,24 @@ const RWrapper = styled(LWrapper)`
   border-left: 2px solid #cbced8;
 `;
 
-function ArtPage1() {
+const CreatorsTxt = styled.h3`
+  width: 368px;
+  height: 15px;
+
+  margin: 0 0 3vh 3vh;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 23px;
+
+  letter-spacing: 0.2px;
+
+  color: #3a4159;
+`;
+
+function ArtPage1({ creatorsToFollow, followState, handleFollow }) {
   return (
     <Wrapper>
       <ArtPost
@@ -71,21 +86,18 @@ function ArtPage1() {
           />
         </LWrapper>
         <RWrapper>
-          <Creator
-            PostImg={AvatarImg2}
-            Name="Harley Spector"
-            PostTxt="The master-builder of human happiness... "
-          />
-          <Creator
-            PostImg={AvatarImg2}
-            Name="Lashped Volfovich"
-            PostTxt="The master-durilder of human society... "
-          />
-          <Creator
-            PostImg={AvatarImg3}
-            Name="Harley Devidson"
-            PostTxt="The master-chef of motor happiness... "
-          />
+          <CreatorsTxt>Creators to follow</CreatorsTxt>
+          {creatorsToFollow.map((i) => (
+            <Creator
+              postImg={i.src}
+              name={i.name}
+              postTxt={i.text}
+              followState={
+                followState.find((follow) => follow.id === i.value).state
+              }
+              handleFollow={() => handleFollow(i.value)}
+            />
+          ))}
         </RWrapper>
       </PostsCreatorsWrapper>
     </Wrapper>

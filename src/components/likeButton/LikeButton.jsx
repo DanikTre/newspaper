@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 import LikeImage from "./components/LikeImage";
 
@@ -25,7 +24,7 @@ const LikeButtonTxt = styled.span`
   color: #8f93a1;
 `;
 
-const LikeButton = ({ state, handleLike }) => {
+const LikeButton = ({ state, count, handleLike }) => {
   // const [liked, setLiked] = useState(!!state);
   // const handleClick = () => {
   //   if (!liked) {
@@ -36,8 +35,6 @@ const LikeButton = ({ state, handleLike }) => {
   //     setCounter(count - 1);
   //   }
   // };
-
-  const [count, setCounter] = useState(345);
 
   return (
     <LikeWrapper onClick={handleLike}>

@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
+import smoothscroll from "smoothscroll-polyfill";
 import {
   Wrapper,
   LeftSideWrapper,
@@ -11,6 +13,10 @@ import SideBar from "./components/SideBar/SideBar";
 import { RouteStucture } from "./routes/routes";
 
 function App() {
+  useEffect(() => {
+    smoothscroll.polyfill();
+  });
+
   return (
     <Wrapper>
       <LeftSideWrapper>

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 
 import MainPage from "../containers/mainPage/MainPage.jsx";
@@ -16,11 +15,51 @@ import Img8 from "../containers/mainPage/components/card/assets/CardImg8.jpg";
 import Img9 from "../containers/mainPage/components/card/assets/CardImg9.jpg";
 import Img10 from "../containers/mainPage/components/card/assets/CardImg10.jpg";
 
+import AvatarImg2 from "../containers/artPage/components/assets/AvatarImg2.png";
+import AvatarImg3 from "../containers/artPage/components/assets/AvatarImg3.jpg";
+
 import AccountImg1 from "../components/SideBar/AvatarImg.png";
 import { getPath, VIEW } from "./paths";
 
 export const RouteStucture = () => {
-  const [value1, setValue1] = useState("0");
+  const creatorsToFollow = [
+    {
+      name: "Harley Spector",
+      text: "The master-builder of human happiness...",
+      src: AvatarImg2,
+      value: "0",
+      state: true,
+    },
+    {
+      name: "Lashped Volfovich",
+      text: "The master-durilder of human society...",
+      src: AvatarImg3,
+      value: "1",
+      state: false,
+    },
+    {
+      name: "Harley Devidson",
+      text: "The master-chef of motor happiness...",
+      src: AvatarImg2,
+      value: "2",
+      state: true,
+    },
+    {
+      name: "James May",
+      text: "The of(f) human ...",
+      src: AvatarImg2,
+      value: "3",
+      state: false,
+    },
+    {
+      name: "Kirill Maskim",
+      text: "Laster-bodibilder of numeric dignaty...",
+      src: AvatarImg3,
+      value: "4",
+      state: true,
+    },
+  ];
+
   const topicOptions = [
     { name: "Topic", value: "0" },
     { name: "Politic", value: "1" },
@@ -29,7 +68,7 @@ export const RouteStucture = () => {
     { name: "Economic", value: "4" },
     { name: "Something...", value: "5" },
   ];
-  const [value2, setValue2] = useState("0");
+
   const weekOptions = [
     { name: "This Day", value: "0" },
     { name: "This Week", value: "1" },
@@ -38,39 +77,92 @@ export const RouteStucture = () => {
     { name: "This Year", value: "4" },
   ];
   const cardList = [
-    { name: "Connection trust1", src: Img1, value: "0", state: true },
-    { name: "Connection trust2", src: Img2, value: "1", state: false },
-    { name: "Connection trust3", src: Img3, value: "2", state: true },
-    { name: "Connection trust4", src: Img4, value: "3", state: true },
-    { name: "Connection trust5", src: Img5, value: "4", state: false },
-    { name: "Connection trust6", src: Img6, value: "5", state: true },
-    { name: "Connection trust7", src: Img7, value: "6", state: true },
-    { name: "Connection trust8", src: Img8, value: "7", state: true },
-    { name: "Connection trust9", src: Img9, value: "8", state: false },
-    { name: "Connection trust10", src: Img10, value: "9", state: true },
-    { name: "Connection trust10", src: Img1, value: "10", state: false },
-    { name: "Connection trust10", src: Img2, value: "11", state: false },
+    {
+      name: "Connection trust1",
+      src: Img1,
+      value: "0",
+      state: true,
+      count: 214,
+    },
+    {
+      name: "Connection trust2",
+      src: Img2,
+      value: "1",
+      state: false,
+      count: 29,
+    },
+    {
+      name: "Connection trust3",
+      src: Img3,
+      value: "2",
+      state: true,
+      count: 232,
+    },
+    {
+      name: "Connection trust4",
+      src: Img4,
+      value: "3",
+      state: true,
+      count: 80,
+    },
+    {
+      name: "Connection trust5",
+      src: Img5,
+      value: "4",
+      state: false,
+      count: 212,
+    },
+    {
+      name: "Connection trust6",
+      src: Img6,
+      value: "5",
+      state: true,
+      count: 298,
+    },
+    {
+      name: "Connection trust7",
+      src: Img7,
+      value: "6",
+      state: true,
+      count: 264,
+    },
+    {
+      name: "Connection trust8",
+      src: Img8,
+      value: "7",
+      state: true,
+      count: 173,
+    },
+    {
+      name: "Connection trust9",
+      src: Img9,
+      value: "8",
+      state: false,
+      count: 129,
+    },
+    {
+      name: "Connection trust10",
+      src: Img10,
+      value: "9",
+      state: true,
+      count: 109,
+    },
+    {
+      name: "Connection trust11",
+      src: Img1,
+      value: "10",
+      state: false,
+      count: 163,
+    },
+    {
+      name: "Connection trust12",
+      src: Img2,
+      value: "11",
+      state: true,
+      count: 154,
+    },
   ];
-  const defaultState = cardList.map((card) => ({
-    id: card.value,
-    state: card.state,
-  }));
-  const [likeState, setLikeState] = useState(defaultState);
-  const handleLike = (id) => {
-    setLikeState((currentState) => {
-      const index = currentState.findIndex((el) => el.id === id);
-      const copy = [...currentState];
-      copy[index].state = !copy[index].state;
-      return copy;
-    });
-  };
 
-  const threePartIndex = Math.floor(cardList.length / 3);
-
-  const thirdPart = cardList.splice(-threePartIndex);
-  const secondPart = cardList.splice(-threePartIndex);
-  const firstPart = cardList;
-  console.log(likeState);
   return (
     <>
       <Routes>
@@ -79,46 +171,17 @@ export const RouteStucture = () => {
           path={getPath(VIEW.MAIN)}
           element={
             <MainPage
-              handleLike={handleLike}
-              likeState={likeState}
-              options1={topicOptions}
-              value1={value1}
-              onChange1={setValue1}
-              options2={weekOptions}
-              value2={value2}
-              onChange2={setValue2}
+              cardList={cardList}
+              topicOptions={topicOptions}
+              weekOptions={weekOptions}
               AccountImg1={AccountImg1}
-              firstPart={firstPart}
-              secondPart={secondPart}
-              thirdPart={thirdPart}
             />
           }
         />
-        <Route
-          path={getPath(VIEW.CARD)}
-          element={
-            <CardPage
-              options1={topicOptions}
-              value1={value1}
-              onChange1={setValue1}
-              options2={weekOptions}
-              value2={value2}
-              onChange2={setValue2}
-            />
-          }
-        />
+        <Route path={getPath(VIEW.CARD)} element={<CardPage />} />
         <Route
           path={getPath(VIEW.ART)}
-          element={
-            <ArtPage
-              options1={topicOptions}
-              value1={value1}
-              onChange1={setValue1}
-              options2={weekOptions}
-              value2={value2}
-              onChange2={setValue2}
-            />
-          }
+          element={<ArtPage creatorsToFollow={creatorsToFollow} />}
         />
         <Route
           path={getPath(VIEW.REDIRECT)}

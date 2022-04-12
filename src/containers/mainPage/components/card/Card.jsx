@@ -60,6 +60,7 @@ function Card({
   src,
   name,
   state,
+  count,
   handleLike,
 }) {
   return (
@@ -79,7 +80,7 @@ function Card({
           >
             <ReadMoreButton>Read this</ReadMoreButton>
           </Link>
-          <LikeButton state={state} handleLike={handleLike} />
+          <LikeButton state={state} count={count} handleLike={handleLike} />
         </ButtonLikeWrapper>
       </InsideCardWrapper>
     </CardWrapper>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-// import { defaultProps } from "react-select/dist/declarations/src/Select";
+// import { Link } from "react-router-dom";
+
 import styled from "styled-components";
 import CloseOnClick from "../../features/clouseOnClick/CloseOnClick";
 
@@ -9,7 +9,6 @@ const ButtonWrapper = styled.div`
   width: ${({ width }) => width || "150px"};
   height: 32px;
   position: relative;
-  /* padding: 4px 0px 4px 0; */
 
   &:focus {
     outline: none;
@@ -25,8 +24,6 @@ const SelectWrapper = styled.div`
 
   z-index: 1000;
   white-space: nowrap;
-
-  /* background-color: #fafafc; */
 `;
 
 const Select = styled.div`
@@ -65,17 +62,6 @@ const Select = styled.div`
     padding: 4px;
     transform: ${({ active }) => (active ? "rotate(225deg)" : "rotate(45deg)")};
   }
-
-  /* &:hover {
-    background-color: #3a4159;
-    color: white;
-    border-radius: 7px;
-
-    &:after {
-      border: solid white;
-      border-width: 0 1px 1px 0;
-    }
-  } */
 `;
 
 const Options = styled.div`
@@ -84,8 +70,6 @@ const Options = styled.div`
   background: #ffffff;
   border-radius: 8px;
 
-  /* padding: 16px 0 0 0; */
-
   height: 255px;
   overflow-y: scroll;
   &::-webkit-scrollbar {
@@ -93,7 +77,6 @@ const Options = styled.div`
   }
   scroll-behavior: smooth;
 
-  /* position: absolute; */
   display: ${({ active }) => (active ? "block" : "none")};
 `;
 
@@ -123,9 +106,6 @@ const Option = styled.div`
   &.selected {
     background: #cbced8;
   }
-
-  /* background-e;
-  } */
 `;
 
 const GradientDiv = styled.div`
@@ -157,7 +137,6 @@ function SelectButton({ display, width, options, className, value, onChange }) {
   const outsideHandler = () => {
     setOpened(false);
   };
-  // console.log(selected);
 
   const onClickItems = (value) => {
     onChange(value);
@@ -171,7 +150,6 @@ function SelectButton({ display, width, options, className, value, onChange }) {
   }, [value]);
 
   const onKeyUp = (e) => {
-    console.log(opened);
     for (let i = 0; i < options.length; i++) {
       if (e.key === "ArrowDown") {
         if (options[i].value === hoveredItem?.value) {

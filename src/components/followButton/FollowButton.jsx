@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import styled from "styled-components";
 
 const FollowWrapper = styled.button`
@@ -26,15 +26,15 @@ const FollowWrapper = styled.button`
   user-select: none;
 `;
 
-const FollowButton = () => {
-  const [followed, setFollowed] = useState(false);
-  const handleClick = () => {
-    setFollowed((value) => !value);
-  };
+const FollowButton = ({ followState, handleFollow }) => {
+  // const [followed, setFollowed] = useState(false);
+  // const handleClick = () => {
+  //   setFollowed((value) => !value);
+  // };
 
   return (
-    <FollowWrapper onClick={handleClick} followed={followed}>
-      {followed ? "Followed" : "Follow"}
+    <FollowWrapper onClick={handleFollow} followed={followState}>
+      {followState ? "Followed" : "Follow"}
     </FollowWrapper>
   );
 };

@@ -73,6 +73,9 @@ const ArrowWrapper = styled.div`
 
   display: ${({ arrowdisplay }) => arrowdisplay || "none"};
   cursor: pointer;
+
+  &:hover {
+  }
 `;
 
 const RightSideHeader = styled.div`
@@ -104,10 +107,8 @@ function Header({
   arrowdisplay,
   txtdisplay,
   SelectButtonsDisplay,
-  width,
-  options1,
-  options2,
-  className,
+  topicOptions,
+  weekOptions,
   value1,
   value2,
   onChange1,
@@ -133,14 +134,14 @@ function Header({
         <TopicThisWeekButtons>
           <StyledSelectButton
             display={SelectButtonsDisplay}
-            options={options1}
+            options={topicOptions}
             value={value1}
             onChange={onChange1}
           />
           <SelectButton
             display={SelectButtonsDisplay}
             width={"126px"}
-            options={options2}
+            options={weekOptions}
             value={value2}
             onChange={onChange2}
           />
