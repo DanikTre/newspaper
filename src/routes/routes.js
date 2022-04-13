@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 
 import MainPage from "../containers/mainPage/MainPage.jsx";
@@ -18,47 +19,16 @@ import Img10 from "../containers/mainPage/components/card/assets/CardImg10.jpg";
 import AvatarImg2 from "../containers/artPage/components/assets/AvatarImg2.png";
 import AvatarImg3 from "../containers/artPage/components/assets/AvatarImg3.jpg";
 
+import PostImg1 from "../containers/artPage/components/assets/Img1.png";
+import PostImg2 from "../containers/artPage/components/assets/Img2.png";
+import PostImg3 from "../containers/artPage/components/assets/Img3.jpg";
+
 import AccountImg1 from "../components/SideBar/AvatarImg.png";
 import { getPath, VIEW } from "./paths";
 
 export const RouteStucture = () => {
-  const creatorsToFollow = [
-    {
-      name: "Harley Spector",
-      text: "The master-builder of human happiness...",
-      src: AvatarImg2,
-      value: "0",
-      state: true,
-    },
-    {
-      name: "Lashped Volfovich",
-      text: "The master-durilder of human society...",
-      src: AvatarImg3,
-      value: "1",
-      state: false,
-    },
-    {
-      name: "Harley Devidson",
-      text: "The master-chef of motor happiness...",
-      src: AvatarImg2,
-      value: "2",
-      state: true,
-    },
-    {
-      name: "James May",
-      text: "The of(f) human ...",
-      src: AvatarImg2,
-      value: "3",
-      state: false,
-    },
-    {
-      name: "Kirill Maskim",
-      text: "Laster-bodibilder of numeric dignaty...",
-      src: AvatarImg3,
-      value: "4",
-      state: true,
-    },
-  ];
+  const [value1, setValue1] = useState("0");
+  const [value2, setValue2] = useState("0");
 
   const topicOptions = [
     { name: "Topic", value: "0" },
@@ -163,6 +133,96 @@ export const RouteStucture = () => {
     },
   ];
 
+  const artPosts = [
+    {
+      h1: "Explain to you",
+      text: "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.",
+      src: PostImg1,
+      date: "Sep 15",
+      bred: "11 min read",
+      value: "0",
+      state: true,
+      count: 13,
+    },
+    {
+      h1: "Brat, no ne drug",
+      text: "Mac Studio is an entirely new Mac desktop. And it all starts with your choice of the ferociously fast M1 Max or the all-new M1 Ultra — the most powerful chip ever in a personal computer.",
+      src: PostImg2,
+      date: "Mar 02",
+      bred: "34 min read",
+      value: "1",
+      state: true,
+      count: 56,
+    },
+    {
+      h1: "Drug, no ne SWAT",
+      text: "Simply good people",
+      src: PostImg3,
+      date: "Jan 21",
+      bred: "2 min read",
+      value: "2",
+      state: false,
+      count: 95,
+    },
+    {
+      h1: "Explain to you",
+      text: "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.",
+      src: PostImg1,
+      date: "Sep 15",
+      bred: "11 min read",
+      value: "3",
+      state: true,
+      count: 147,
+    },
+    {
+      h1: "Explain to youu",
+      text: "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.",
+      src: PostImg1,
+      date: "Sep 15",
+      bred: "11 min read",
+      value: "4",
+      state: true,
+      count: 112,
+    },
+  ];
+
+  const creatorsToFollow = [
+    {
+      name: "Harley Spector",
+      text: "The master-builder of human happiness...",
+      src: AvatarImg2,
+      value: "0",
+      state: true,
+    },
+    {
+      name: "Lashped Volfovich",
+      text: "The master-durilder of human society...",
+      src: AvatarImg3,
+      value: "1",
+      state: false,
+    },
+    {
+      name: "Harley Devidson",
+      text: "The master-chef of motor happiness...",
+      src: AvatarImg2,
+      value: "2",
+      state: true,
+    },
+    {
+      name: "James May",
+      text: "The of(f) human ...",
+      src: AvatarImg2,
+      value: "3",
+      state: false,
+    },
+    {
+      name: "Kirill Maskim",
+      text: "Laster-bodibilder of numeric dignaty...",
+      src: AvatarImg3,
+      value: "4",
+      state: true,
+    },
+  ];
   return (
     <>
       <Routes>
@@ -171,6 +231,10 @@ export const RouteStucture = () => {
           path={getPath(VIEW.MAIN)}
           element={
             <MainPage
+              value1={value1}
+              onChange1={setValue1}
+              value2={value2}
+              onChange2={setValue2}
               cardList={cardList}
               topicOptions={topicOptions}
               weekOptions={weekOptions}
@@ -178,10 +242,34 @@ export const RouteStucture = () => {
             />
           }
         />
-        <Route path={getPath(VIEW.CARD)} element={<CardPage />} />
+        <Route
+          path={getPath(VIEW.CARD)}
+          element={
+            <CardPage
+              cardList={cardList}
+              topicOptions={topicOptions}
+              weekOptions={weekOptions}
+              value1={value1}
+              setValue1={setValue1}
+              value2={value2}
+              setValue2={setValue2}
+            />
+          }
+        />
         <Route
           path={getPath(VIEW.ART)}
-          element={<ArtPage creatorsToFollow={creatorsToFollow} />}
+          element={
+            <ArtPage
+              artPosts={artPosts}
+              creatorsToFollow={creatorsToFollow}
+              topicOptions={topicOptions}
+              weekOptions={weekOptions}
+              value1={value1}
+              setValue1={setValue1}
+              value2={value2}
+              setValue2={setValue2}
+            />
+          }
         />
         <Route
           path={getPath(VIEW.REDIRECT)}

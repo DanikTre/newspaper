@@ -13,6 +13,8 @@ const InfoWrapper = styled.div`
   align-items: flex-start;
   justify-content: center;
   flex-wrap: wrap;
+
+  padding: 0 0 80px 0;
 `;
 
 const RowInfoWrapper = styled.div`
@@ -105,7 +107,7 @@ const Image2 = styled.img`
   user-select: none;
 `;
 
-function CardBlock1({ handleClick, count }) {
+function CardBlock1({ handleLike, state, count }) {
   return (
     <InfoWrapper>
       <RowInfoWrapper>
@@ -114,7 +116,7 @@ function CardBlock1({ handleClick, count }) {
           <ButtonsRow>
             <ButtonsRowTxt>by Sam Dekker</ButtonsRowTxt>
             <LikeButtonWrapper>
-              <LikeButton onClick={handleClick} />
+              <LikeButton onClick={handleLike} state={state} count={count} />
             </LikeButtonWrapper>
             <PageButton />
           </ButtonsRow>

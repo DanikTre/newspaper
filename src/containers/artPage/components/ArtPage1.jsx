@@ -3,10 +3,6 @@ import styled from "styled-components";
 import ArtPost from "./ArtPost";
 import Creator from "./Creator";
 
-import PostImg1 from "./assets/Img1.png";
-import PostImg2 from "./assets/Img2.png";
-import PostImg3 from "./assets/Img3.jpg";
-
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -50,45 +46,56 @@ const CreatorsTxt = styled.h3`
   color: #3a4159;
 `;
 
-function ArtPage1({ creatorsToFollow, followState, handleFollow }) {
+function ArtPage1({
+  creatorsToFollow,
+  followState,
+  handleFollow,
+  artPosts,
+  handleLike,
+  likeState,
+  likeCount,
+}) {
+  const artPostsCopy = [...artPosts];
+  const restArtPosts = artPostsCopy.splice(1);
+  const firstArtPost = artPostsCopy;
+
   return (
     <Wrapper>
-      <ArtPost
-        PostImg={PostImg1}
-        h1Text="Explain to you"
-        PostTxt="But I must explain to you how all this mistaken idea of denouncing
-          pleasure and praising pain was born and I will give you a complete
-          account of the system, and expound the actual teachings of the great
-          explorer of the truth, the master-builder of human happiness. But I
-          must explain to you how all this mistaken idea of denouncing pleasure
-          and praising pain was born and I will give you a complete account of
-          the system, and expound the actual teachings of the great explorer of
-          the truth, the master-builder of human happiness."
-        PostDate="Sep 15"
-        PostBred="11 min read"
-      />
+      {firstArtPost.map((i) => (
+        <ArtPost
+          key={i.value}
+          PostImg={i.src}
+          h1Text={i.h1}
+          PostTxt={i.text}
+          PostDate={i.date}
+          PostBred={i.bred}
+          handleLike={() => handleLike(i.value)}
+          state={likeState.find((like) => like.id === i.value).state}
+          count={likeCount.find((like) => like.id === i.value).count}
+        />
+      ))}
       <PostsCreatorsWrapper>
         <LWrapper>
-          <ArtPost
-            PostImg={PostImg2}
-            h1Text="Brat, no ne drug"
-            PostTxt="Mac Studio is an entirely new Mac desktop. And it all starts with your choice of the ferociously fast M1 Max or the all-new M1 Ultra — the most powerful chip ever in a personal computer."
-            PostDate="Mar 02"
-            PostBred="34 min read"
-            margin="0 0 78px 0"
-          />
-          <ArtPost
-            PostImg={PostImg3}
-            h1Text="Drug, no ne SWAT"
-            PostTxt="Simply good people"
-            PostDate="Jan 21"
-            PostBred="2 min read"
-          />
+          {restArtPosts.map((i) => (
+            <ArtPost
+              key={i.value}
+              margin="0 0 78px 0"
+              PostImg={i.src}
+              h1Text={i.h1}
+              PostTxt={i.text}
+              PostDate={i.date}
+              PostBred={i.bred}
+              handleLike={() => handleLike(i.value)}
+              state={likeState.find((like) => like.id === i.value).state}
+              count={likeCount.find((like) => like.id === i.value).count}
+            />
+          ))}
         </LWrapper>
         <RWrapper>
           <CreatorsTxt>Creators to follow</CreatorsTxt>
           {creatorsToFollow.map((i) => (
             <Creator
+              key={i.value}
               postImg={i.src}
               name={i.name}
               postTxt={i.text}

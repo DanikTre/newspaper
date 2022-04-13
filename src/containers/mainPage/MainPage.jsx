@@ -18,14 +18,19 @@ const StyledCard = styled(Card)`
 
 //
 //
-const MainPage = ({ cardList, topicOptions, weekOptions }) => {
+const MainPage = ({
+  cardList,
+  topicOptions,
+  weekOptions,
+  value1,
+  setValue1,
+  value2,
+  setValue2,
+}) => {
   //
   // Select buttons option state
 
-  const [value1, setValue1] = useState("0");
-  const [value2, setValue2] = useState("0");
-
-  // Like button state
+  // Like button state, counter
 
   const defaultLikeState = cardList.map((card) => ({
     id: card.value,
@@ -58,13 +63,12 @@ const MainPage = ({ cardList, topicOptions, weekOptions }) => {
 
   // Card array split
 
+  const cardListCopy = [...cardList];
   const threePartIndex = Math.floor(cardList.length / 3);
 
-  const thirdPart = cardList.splice(-threePartIndex);
-  const secondPart = cardList.splice(-threePartIndex);
-  const firstPart = cardList;
-
-  console.log(firstPart);
+  const thirdPart = cardListCopy.splice(-threePartIndex);
+  const secondPart = cardListCopy.splice(-threePartIndex);
+  const firstPart = cardListCopy;
 
   return (
     <CenteredWrapper>
@@ -74,7 +78,7 @@ const MainPage = ({ cardList, topicOptions, weekOptions }) => {
         topicOptions={topicOptions}
         value1={value1}
         onChange1={setValue1}
-        options2={weekOptions}
+        weekOptions={weekOptions}
         value2={value2}
         onChange2={setValue2}
       ></Header>
