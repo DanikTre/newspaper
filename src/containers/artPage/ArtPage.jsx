@@ -23,7 +23,7 @@ function ArtPage({
 
   const [likeState, setLikeState] = useState(defaultLikeState);
   const [likeCount, setLikeCount] = useState(defaultLikeState);
-  // debugger;
+  debugger;
   const handleLike = (id) => {
     setLikeState((currentState) => {
       const index = currentState.findIndex((el) => el.id === id);
