@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import LikeButton from "../../../components/likeButton/LikeButton";
-import PageButton from "./PageButton";
+import SaveButton from "./SaveButton";
 
 import Img1 from "./assets/PageImg1.png";
 import Img2 from "./assets/PageImg2.jpg";
@@ -107,7 +107,7 @@ const Image2 = styled.img`
   user-select: none;
 `;
 
-function CardBlock1({ handleLike, state, count }) {
+function CardBlock1({ handleLike, state, count, handleSave, saveState }) {
   return (
     <InfoWrapper>
       <RowInfoWrapper>
@@ -115,10 +115,10 @@ function CardBlock1({ handleLike, state, count }) {
           <PageTxt>Bruce Nauman: new video“le man”</PageTxt>
           <ButtonsRow>
             <ButtonsRowTxt>by Sam Dekker</ButtonsRowTxt>
-            <LikeButtonWrapper>
-              <LikeButton onClick={handleLike} state={state} count={count} />
+            <LikeButtonWrapper onClick={handleLike}>
+              <LikeButton state={state} count={count} />
             </LikeButtonWrapper>
-            <PageButton />
+            <SaveButton handleSave={handleSave} saveState={saveState} />
           </ButtonsRow>
           <TextRow>
             But I must explain to you how all this mistaken idea of denouncing

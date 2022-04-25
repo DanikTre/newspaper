@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 import PageImg from "./PageImg";
 
@@ -23,7 +22,7 @@ const SavedIcon = styled.div`
   height: 12px;
 
   background: #cbced8;
-  opacity: ${({ selected }) => (selected ? "0.4" : "0")};
+  opacity: ${({ state }) => (state ? "0.4" : "0")};
   border-radius: 3px;
 
   font-family: "Poppins";
@@ -38,19 +37,14 @@ const SavedIcon = styled.div`
   color: #3a4159;
 `;
 
-const PageButton = () => {
-  const [selected, setSelected] = useState(false);
-  const handleClick = () => {
-    setSelected((value) => !value);
-  };
-
+const SaveButton = ({ saveState, handleSave }) => {
   return (
     <PageButtonWrapper>
-      <PageImgWrapper onClick={handleClick}>
-        <PageImg selected={selected} />
+      <PageImgWrapper onClick={handleSave}>
+        <PageImg state={saveState} />
       </PageImgWrapper>
-      <SavedIcon selected={selected}>Saved</SavedIcon>
+      <SavedIcon state={saveState}>Saved</SavedIcon>
     </PageButtonWrapper>
   );
 };
-export default PageButton;
+export default SaveButton;

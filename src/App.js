@@ -12,7 +12,7 @@ import AccountImg1 from "./components/SideBar/AvatarImg.png";
 import SideBar from "./components/SideBar/SideBar";
 import { RouteStucture } from "./routes/routes";
 
-function App({ state }) {
+function App() {
   useEffect(() => {
     smoothscroll.polyfill();
   });
@@ -21,7 +21,7 @@ function App({ state }) {
     <Wrapper>
       <LeftSideWrapper>
         <Router>
-          <RouteStucture state={state} />
+          <RouteStucture />
         </Router>
       </LeftSideWrapper>
       <RightSideWrapper>

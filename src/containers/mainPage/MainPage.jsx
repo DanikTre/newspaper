@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import {
   CenteredWrapper,
   CardsWrapper,
@@ -8,7 +6,7 @@ import {
 
 import styled from "styled-components";
 
-import Header from "../../components/header/Header";
+import HeaderContainer from "../../components/header/HeaderContainer";
 import Card from "./components/card/Card";
 import StrokeButtons from "../../components/strokeButtons/StrokeButtons";
 
@@ -18,49 +16,7 @@ const StyledCard = styled(Card)`
 
 //
 //
-const MainPage = ({
-  cardList,
-  topicOptions,
-  weekOptions,
-  value1,
-  setValue1,
-  value2,
-  setValue2,
-}) => {
-  //
-  // Select buttons option state
-
-  // Like button state, counter
-
-  const defaultLikeState = cardList.map((card) => ({
-    id: card.value,
-    state: card.state,
-    count: card.count,
-  }));
-
-  const [likeState, setLikeState] = useState(defaultLikeState);
-  const [likeCount, setLikeCount] = useState(defaultLikeState);
-
-  const handleLike = (id) => {
-    // debugger;
-    setLikeState((currentState) => {
-      const index = currentState.findIndex((el) => el.id === id);
-      const copy = [...currentState];
-      copy[index].state = !copy[index].state;
-      return copy;
-    });
-    setLikeCount((currentState) => {
-      const index = currentState.findIndex((el) => el.id === id);
-      const copy = [...currentState];
-      if (currentState.state === false) {
-        copy[index].count = copy[index].count++;
-      } else {
-        copy[index].count = copy[index].count--;
-      }
-      return copy;
-    });
-  };
-
+const MainPage = ({ cardList, handleLike }) => {
   // Card array split
 
   const cardListCopy = [...cardList];
@@ -72,53 +28,47 @@ const MainPage = ({
 
   return (
     <CenteredWrapper>
-      <Header
+      <HeaderContainer
         SelectButtonsDisplay="block"
         headerText="Daily Resources"
-        topicOptions={topicOptions}
-        value1={value1}
-        onChange1={setValue1}
-        weekOptions={weekOptions}
-        value2={value2}
-        onChange2={setValue2}
-      ></Header>
+      ></HeaderContainer>
       <CardsWrapper>
         <ColumnCardWrapper width="303px" margin="24px">
-          {firstPart.map((i) => (
+          {firstPart.map((card) => (
             <Card
-              handleLike={() => handleLike(i.value)}
-              state={likeState.find((like) => like.id === i.value).state}
-              count={likeCount.find((like) => like.id === i.value).count}
-              value={i.value}
-              key={i.value}
-              name={i.name}
-              src={i.src}
+              handleLike={() => handleLike(card.id)}
+              likeState={cardList.find((like) => like.id === card.id).likeState}
+              likeCount={cardList.find((like) => like.id === card.id).likeCount}
+              id={card.id}
+              key={card.id}
+              name={card.name}
+              src={card.src}
             />
           ))}
         </ColumnCardWrapper>
         <ColumnCardWrapper width="303px" margin="24px">
-          {secondPart.map((i) => (
+          {secondPart.map((card) => (
             <StyledCard
-              handleLike={() => handleLike(i.value)}
-              state={likeState.find((like) => like.id === i.value).state}
-              count={likeCount.find((like) => like.id === i.value).count}
-              value={i.value}
-              key={i.value}
-              name={i.name}
-              src={i.src}
+              handleLike={() => handleLike(card.id)}
+              likeState={cardList.find((like) => like.id === card.id).likeState}
+              likeCount={cardList.find((like) => like.id === card.id).likeCount}
+              id={card.id}
+              key={card.id}
+              name={card.name}
+              src={card.src}
             />
           ))}
         </ColumnCardWrapper>
         <ColumnCardWrapper width="437px">
-          {thirdPart.map((i) => (
+          {thirdPart.map((card) => (
             <Card
-              handleLike={() => handleLike(i.value)}
-              state={likeState.find((like) => like.id === i.value).state}
-              count={likeCount.find((like) => like.id === i.value).count}
-              value={i.value}
-              key={i.value}
-              name={i.name}
-              src={i.src}
+              handleLike={() => handleLike(card.id)}
+              likeState={cardList.find((like) => like.id === card.id).likeState}
+              likeCount={cardList.find((like) => like.id === card.id).likeCount}
+              id={card.id}
+              key={card.id}
+              name={card.name}
+              src={card.src}
             />
           ))}
         </ColumnCardWrapper>

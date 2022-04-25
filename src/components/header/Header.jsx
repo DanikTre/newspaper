@@ -111,9 +111,10 @@ function Header({
   weekOptions,
   value1,
   value2,
-  onChange1,
-  onChange2,
+  handleTopicSelect,
+  handleWeekSelect,
 }) {
+  console.log(value1);
   return (
     <HeaderWrapper>
       <LeftSideHeader>
@@ -136,14 +137,14 @@ function Header({
             display={SelectButtonsDisplay}
             options={topicOptions}
             value={value1}
-            onChange={onChange1}
+            onChange={handleTopicSelect}
           />
           <SelectButton
             display={SelectButtonsDisplay}
             width={"126px"}
             options={weekOptions}
             value={value2}
-            onChange={onChange2}
+            onChange={handleWeekSelect}
           />
         </TopicThisWeekButtons>
       </RightSideHeader>

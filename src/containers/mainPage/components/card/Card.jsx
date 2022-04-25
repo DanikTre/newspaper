@@ -59,9 +59,10 @@ function Card({
   value,
   src,
   name,
-  state,
-  count,
-  handleLike,
+  likeState,
+  likeCount,
+  like,
+  unlike,
 }) {
   return (
     <CardWrapper className={className} width={width} margin={margin}>
@@ -80,7 +81,12 @@ function Card({
           >
             <ReadMoreButton>Read this</ReadMoreButton>
           </Link>
-          <LikeButton state={state} count={count} handleLike={handleLike} />
+          <LikeButton
+            likeState={likeState}
+            likeCount={likeCount}
+            like={like}
+            unlike={unlike}
+          />
         </ButtonLikeWrapper>
       </InsideCardWrapper>
     </CardWrapper>

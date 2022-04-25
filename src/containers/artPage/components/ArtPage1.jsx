@@ -53,7 +53,6 @@ function ArtPage1({
   artPosts,
   handleLike,
   likeState,
-  likeCount,
 }) {
   const artPostsCopy = [...artPosts];
   const restArtPosts = artPostsCopy.splice(1);
@@ -71,7 +70,7 @@ function ArtPage1({
           PostBred={i.bred}
           handleLike={() => handleLike(i.value)}
           state={likeState.find((like) => like.id === i.value).state}
-          count={likeCount.find((like) => like.id === i.value).count}
+          count={likeState.find((like) => like.id === i.value).count}
         />
       ))}
       <PostsCreatorsWrapper>
@@ -87,7 +86,7 @@ function ArtPage1({
               PostBred={i.bred}
               handleLike={() => handleLike(i.value)}
               state={likeState.find((like) => like.id === i.value).state}
-              count={likeCount.find((like) => like.id === i.value).count}
+              count={likeState.find((like) => like.id === i.value).count}
             />
           ))}
         </LWrapper>

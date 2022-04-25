@@ -125,7 +125,7 @@ const GradientDiv = styled.div`
 
 function SelectButton({ display, width, options, className, value, onChange }) {
   const [opened, setOpened] = useState(false);
-  const [selected, setSelected] = useState(options[0].value);
+  const [selected, setSelected] = useState(options[0].id);
   // const handleClick = (value) => {
   //   setSelected(value);
   // };
@@ -138,13 +138,13 @@ function SelectButton({ display, width, options, className, value, onChange }) {
     setOpened(false);
   };
 
-  const onClickItems = (value) => {
-    onChange(value);
+  const onClickItems = (id) => {
+    onChange(id);
     setOpened(!opened);
   };
 
-  const selectedItem = options.find((i) => i.value === value);
-  const hoveredItem = options.find((i) => i.value === selected);
+  const selectedItem = options.find((i) => i.id === value);
+  const hoveredItem = options.find((i) => i.id === selected);
   useEffect(() => {
     setSelected(value);
   }, [value]);
@@ -152,23 +152,23 @@ function SelectButton({ display, width, options, className, value, onChange }) {
   const onKeyUp = (e) => {
     for (let i = 0; i < options.length; i++) {
       if (e.key === "ArrowDown") {
-        if (options[i].value === hoveredItem?.value) {
+        if (options[i].id === hoveredItem?.value) {
           if (options[i + 1]) {
-            setSelected(options[i + 1].value);
+            setSelected(options[i + 1].id);
             return;
           }
         }
       }
       if (e.key === "ArrowUp") {
-        if (options[i].value === hoveredItem?.value) {
+        if (options[i].id === hoveredItem?.value) {
           if (options[i - 1]) {
-            setSelected(options[i - 1].value);
+            setSelected(options[i - 1].id);
             return;
           }
         }
       }
       if (!selectedItem) {
-        onChange(options[0].value);
+        onChange(options[0].id);
       }
     }
     if (e.key === "Enter") {
@@ -199,11 +199,11 @@ function SelectButton({ display, width, options, className, value, onChange }) {
               // <Link to={PATH.item.value}>
               <Option
                 className={hoveredItem === item ? "selected" : ""}
-                key={item.value}
+                key={item.id}
                 onMouseEnter={() => {
-                  setSelected(item.value);
+                  setSelected(item.id);
                 }}
-                onClick={() => onClickItems(item.value)}
+                onClick={() => onClickItems(item.id)}
               >
                 {item.name}
               </Option>

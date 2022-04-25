@@ -1,9 +1,9 @@
-import { useState } from "react";
-
 import { LeftSideCenteredWrapper } from "./artStyledComponents";
 
 import Header from "../../components/header/Header";
 import ArtPage1 from "./components/ArtPage1";
+import { useLikeFunctionality } from "../mainPage/useLikeFunctionality";
+import { useFollowFunctionality } from "./useFollowFunctionality";
 
 function ArtPage({
   creatorsToFollow,
@@ -15,48 +15,8 @@ function ArtPage({
   weekOptions,
   artPosts,
 }) {
-  const defaultLikeState = artPosts.map((artPost) => ({
-    id: artPost.value,
-    state: artPost.state,
-    count: artPost.count,
-  }));
-
-  const [likeState, setLikeState] = useState(defaultLikeState);
-  const [likeCount, setLikeCount] = useState(defaultLikeState);
-  debugger;
-  const handleLike = (id) => {
-    setLikeState((currentState) => {
-      const index = currentState.findIndex((el) => el.id === id);
-      const copy = [...currentState];
-      copy[index].state = !copy[index].state;
-      return copy;
-    });
-    setLikeCount((currentState) => {
-      const index = currentState.findIndex((el) => el.id === id);
-      const copy = [...currentState];
-      if (!copy[index].state) {
-        copy[index].count = copy[index].count++;
-      } else {
-        copy[index].count = copy[index].count--;
-      }
-      return copy;
-    });
-  };
-
-  const defaultFollowState = creatorsToFollow.map((follow) => ({
-    id: follow.value,
-    state: follow.state,
-  }));
-  const [followState, setFollowState] = useState(defaultFollowState);
-  const handleFollow = (id) => {
-    // debugger;
-    setFollowState((currentFollowState) => {
-      const index = currentFollowState.findIndex((el) => el.id === id);
-      const copy = [...currentFollowState];
-      copy[index].state = !copy[index].state;
-      return copy;
-    });
-  };
+  const [likeState, handleLike] = useLikeFunctionality(artPosts);
+  const [followState, handleFollow] = useFollowFunctionality(creatorsToFollow);
 
   return (
     <LeftSideCenteredWrapper>
@@ -77,7 +37,6 @@ function ArtPage({
         artPosts={artPosts}
         handleLike={handleLike}
         likeState={likeState}
-        likeCount={likeCount}
         creatorsToFollow={creatorsToFollow}
         followState={followState}
         handleFollow={handleFollow}
