@@ -91,9 +91,9 @@ function ArtPost({
   PostTxt,
   PostDate,
   PostBred,
+  likeState,
+  likeCount,
   handleLike,
-  state,
-  count,
   margin,
 }) {
   return (
@@ -107,8 +107,12 @@ function ArtPost({
         <ButtonsRow>
           <ButtonsRowTxt>{PostDate}</ButtonsRowTxt>
           <ButtonsRowTxt>{PostBred}</ButtonsRowTxt>
-          <LikeButtonWrapper onClick={handleLike}>
-            <LikeButton state={state} count={count} />
+          <LikeButtonWrapper>
+            <LikeButton
+              likeState={likeState}
+              likeCount={likeCount}
+              handleLike={handleLike}
+            />
           </LikeButtonWrapper>
         </ButtonsRow>
       </RightSideDiv>

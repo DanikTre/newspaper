@@ -56,18 +56,17 @@ function Card({
   className,
   width,
   margin,
-  value,
+  id,
   src,
   name,
   likeState,
   likeCount,
-  like,
-  unlike,
+  handleLike,
 }) {
   return (
     <CardWrapper className={className} width={width} margin={margin}>
       <Link
-        to={injectPathParams(getPath(VIEW.CARD), { id: value })}
+        to={injectPathParams(getPath(VIEW.CARD), { id })}
         style={{ textDecoration: "none" }}
       >
         <Card1Img src={src} alt="Card Image" />
@@ -76,7 +75,7 @@ function Card({
         <Card1Txt>{name}</Card1Txt>
         <ButtonLikeWrapper>
           <Link
-            to={injectPathParams(getPath(VIEW.CARD), { id: value })}
+            to={injectPathParams(getPath(VIEW.CARD), { id })}
             style={{ textDecoration: "none" }}
           >
             <ReadMoreButton>Read this</ReadMoreButton>
@@ -84,8 +83,7 @@ function Card({
           <LikeButton
             likeState={likeState}
             likeCount={likeCount}
-            like={like}
-            unlike={unlike}
+            handleLike={handleLike}
           />
         </ButtonLikeWrapper>
       </InsideCardWrapper>

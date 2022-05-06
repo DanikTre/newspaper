@@ -16,8 +16,6 @@ import PostImg1 from "../containers/artPage/components/assets/Img1.png";
 import PostImg2 from "../containers/artPage/components/assets/Img2.png";
 import PostImg3 from "../containers/artPage/components/assets/Img3.jpg";
 
-import AccountImg1 from "../components/SideBar/AvatarImg.png";
-
 const store = {
   _state: {
     mainPage: {},

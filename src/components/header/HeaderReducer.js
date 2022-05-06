@@ -1,4 +1,5 @@
 const HANDLE_SELECT = "HANDLE-SELECT";
+const SET_OPENED = "SET-OPENED";
 
 const initialState = {
   topicSelect: {
@@ -15,6 +16,7 @@ const initialState = {
   },
   weekSelect: {
     selected: 0,
+    opened: false,
     options: [
       { name: "This Day", id: 0 },
       { name: "This Week", id: 1 },
@@ -28,8 +30,22 @@ const initialState = {
 const HeaderReducer = (state = initialState, action) => {
   switch (action.type) {
     case HANDLE_SELECT: {
-      debugger;
-      return { ...state, ...action.whichButton, selected: action.optionID };
+      return {
+        ...state,
+        [action.whichButton]: {
+          ...state[action.whichButton],
+          selected: action.optionID,
+        },
+      };
+    }
+    case SET_OPENED: {
+      return {
+        ...state,
+        [action.whichButton]: {
+          ...state[action.whichButton],
+          opened: !state[action.whichButton].opened,
+        },
+      };
     }
     default: {
       return state;
@@ -37,10 +53,17 @@ const HeaderReducer = (state = initialState, action) => {
   }
 };
 
-export const handleSelectAC = (whichButton, optionID) => ({
-  type: HANDLE_SELECT,
+export const handleSelectOptionAC = (whichButton, optionID) =>
+  //  console.log(whichButton),
+  ({
+    type: HANDLE_SELECT,
+    whichButton,
+    optionID,
+  });
+
+export const setOpenedAC = (whichButton) => ({
+  type: SET_OPENED,
   whichButton,
-  optionID,
 });
 
 export default HeaderReducer;

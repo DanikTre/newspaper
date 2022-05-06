@@ -46,14 +46,7 @@ const CreatorsTxt = styled.h3`
   color: #3a4159;
 `;
 
-function ArtPage1({
-  creatorsToFollow,
-  followState,
-  handleFollow,
-  artPosts,
-  handleLike,
-  likeState,
-}) {
+function ArtPage1({ creatorsToFollow, handleFollow, artPosts, handleLike }) {
   const artPostsCopy = [...artPosts];
   const restArtPosts = artPostsCopy.splice(1);
   const firstArtPost = artPostsCopy;
@@ -62,31 +55,31 @@ function ArtPage1({
     <Wrapper>
       {firstArtPost.map((i) => (
         <ArtPost
-          key={i.value}
+          key={i.id}
           PostImg={i.src}
           h1Text={i.h1}
           PostTxt={i.text}
           PostDate={i.date}
           PostBred={i.bred}
-          handleLike={() => handleLike(i.value)}
-          state={likeState.find((like) => like.id === i.value).state}
-          count={likeState.find((like) => like.id === i.value).count}
+          handleLike={() => handleLike(i.id)}
+          likeState={artPosts.find((post) => post.id === i.id).likeState}
+          likeCount={artPosts.find((post) => post.id === i.id).likeCount}
         />
       ))}
       <PostsCreatorsWrapper>
         <LWrapper>
           {restArtPosts.map((i) => (
             <ArtPost
-              key={i.value}
+              key={i.id}
               margin="0 0 78px 0"
               PostImg={i.src}
               h1Text={i.h1}
               PostTxt={i.text}
               PostDate={i.date}
               PostBred={i.bred}
-              handleLike={() => handleLike(i.value)}
-              state={likeState.find((like) => like.id === i.value).state}
-              count={likeState.find((like) => like.id === i.value).count}
+              handleLike={() => handleLike(i.id)}
+              likeState={artPosts.find((post) => post.id === i.id).likeState}
+              likeCount={artPosts.find((post) => post.id === i.id).likeCount}
             />
           ))}
         </LWrapper>
@@ -94,14 +87,15 @@ function ArtPage1({
           <CreatorsTxt>Creators to follow</CreatorsTxt>
           {creatorsToFollow.map((i) => (
             <Creator
-              key={i.value}
+              key={i.id}
               postImg={i.src}
               name={i.name}
               postTxt={i.text}
               followState={
-                followState.find((follow) => follow.id === i.value).state
+                creatorsToFollow.find((follow) => follow.id === i.id)
+                  .followState
               }
-              handleFollow={() => handleFollow(i.value)}
+              handleFollow={() => handleFollow(i.id)}
             />
           ))}
         </RWrapper>

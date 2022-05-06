@@ -24,20 +24,9 @@ const LikeButtonTxt = styled.span`
   color: #8f93a1;
 `;
 
-const LikeButton = ({ likeState, likeCount, like, unlike }) => {
-  // const [liked, setLiked] = useState(!!state);
-  // const handleClick = () => {
-  //   if (!liked) {
-  //     setLiked((value) => !value);
-  //     setCounter(count + 1);
-  //   } else {
-  //     setLiked((value) => !value);
-  //     setCounter(count - 1);
-  //   }
-  // };
-
+const LikeButton = ({ likeState, likeCount, handleLike }) => {
   return (
-    <LikeWrapper onClick={(likeState) => (likeState ? unlike : like)}>
+    <LikeWrapper onClick={handleLike}>
       <LikeImage liked={likeState} />
       <LikeButtonTxt>{likeCount}</LikeButtonTxt>
     </LikeWrapper>

@@ -109,12 +109,14 @@ function Header({
   SelectButtonsDisplay,
   topicOptions,
   weekOptions,
-  value1,
-  value2,
-  handleTopicSelect,
-  handleWeekSelect,
+  topicSelected,
+  weekSelected,
+  topicOpened,
+  weekOpened,
+  handleOpen,
+  handleTopicSelectOption,
+  handleWeekSelectOption,
 }) {
-  console.log(value1);
   return (
     <HeaderWrapper>
       <LeftSideHeader>
@@ -136,15 +138,19 @@ function Header({
           <StyledSelectButton
             display={SelectButtonsDisplay}
             options={topicOptions}
-            value={value1}
-            onChange={handleTopicSelect}
+            selected={topicSelected}
+            ChangeOption={handleTopicSelectOption}
+            opened={topicOpened}
+            handleOpen={() => handleOpen("topicSelect")}
           />
           <SelectButton
             display={SelectButtonsDisplay}
             width={"126px"}
             options={weekOptions}
-            value={value2}
-            onChange={handleWeekSelect}
+            selected={weekSelected}
+            ChangeOption={handleWeekSelectOption}
+            opened={weekOpened}
+            handleOpen={() => handleOpen("weekSelect")}
           />
         </TopicThisWeekButtons>
       </RightSideHeader>

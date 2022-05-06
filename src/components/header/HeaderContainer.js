@@ -1,28 +1,35 @@
 import { connect } from "react-redux";
 
 import Header from "./Header";
-import { handleSelectAC } from "./HeaderReducer";
+import { handleSelectOptionAC, setOpenedAC } from "./HeaderReducer";
 
 let mapStateToProps = (state) => {
   const HeaderState = state.Header;
   return {
     topicOptions: HeaderState.topicSelect.options,
     weekOptions: HeaderState.weekSelect.options,
-    value1: HeaderState.topicSelect.selected,
-    value2: HeaderState.weekSelect.selected,
+    topicSelected: HeaderState.topicSelect.selected,
+    weekSelected: HeaderState.weekSelect.selected,
+    topicOpened: HeaderState.topicSelect.opened,
+    weekOpened: HeaderState.weekSelect.opened,
   };
 };
 let mapDispatchToProps = (dispatch) => {
   return {
-    handleTopicSelect: (optionID) => {
+    handleTopicSelectOption: (optionID) => {
       const whichButton = "topicSelect";
-      dispatch(handleSelectAC("topicSelect", optionID));
+      dispatch(handleSelectOptionAC(whichButton, optionID));
+      console.log("dispatch(handleSelectAC - topicSelect");
     },
-    handleWeekSelect: (optionID) => {
-      dispatch(handleSelectAC(optionID));
+    handleWeekSelectOption: (optionID) => {
+      const whichButton = "weekSelect";
+      dispatch(handleSelectOptionAC(whichButton, optionID));
+      console.log("dispatch(handleSelectAC - weekSelect");
     },
-    handleOpen: (optionID) => {
-      dispatch(handleSelectAC(optionID));
+    handleOpen: (whichButton) => {
+      // const whichButton = "topicSelect";
+      console.log("dispatch(setOpenedAC(", whichButton, "))");
+      dispatch(setOpenedAC(whichButton));
     },
   };
 };

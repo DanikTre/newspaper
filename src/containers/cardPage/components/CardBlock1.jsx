@@ -107,7 +107,13 @@ const Image2 = styled.img`
   user-select: none;
 `;
 
-function CardBlock1({ handleLike, state, count, handleSave, saveState }) {
+function CardBlock1({
+  handleLike,
+  likeState,
+  likeCount,
+  handleSave,
+  saveState,
+}) {
   return (
     <InfoWrapper>
       <RowInfoWrapper>
@@ -115,8 +121,12 @@ function CardBlock1({ handleLike, state, count, handleSave, saveState }) {
           <PageTxt>Bruce Nauman: new video“le man”</PageTxt>
           <ButtonsRow>
             <ButtonsRowTxt>by Sam Dekker</ButtonsRowTxt>
-            <LikeButtonWrapper onClick={handleLike}>
-              <LikeButton state={state} count={count} />
+            <LikeButtonWrapper>
+              <LikeButton
+                likeState={likeState}
+                likeCount={likeCount}
+                handleLike={handleLike}
+              />
             </LikeButtonWrapper>
             <SaveButton handleSave={handleSave} saveState={saveState} />
           </ButtonsRow>

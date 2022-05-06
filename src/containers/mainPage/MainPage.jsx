@@ -37,8 +37,8 @@ const MainPage = ({ cardList, handleLike }) => {
           {firstPart.map((card) => (
             <Card
               handleLike={() => handleLike(card.id)}
-              likeState={cardList.find((like) => like.id === card.id).likeState}
-              likeCount={cardList.find((like) => like.id === card.id).likeCount}
+              likeState={cardList.find((i) => i.id === card.id).likeState}
+              likeCount={cardList.find((i) => i.id === card.id).likeCount}
               id={card.id}
               key={card.id}
               name={card.name}
@@ -50,8 +50,8 @@ const MainPage = ({ cardList, handleLike }) => {
           {secondPart.map((card) => (
             <StyledCard
               handleLike={() => handleLike(card.id)}
-              likeState={cardList.find((like) => like.id === card.id).likeState}
-              likeCount={cardList.find((like) => like.id === card.id).likeCount}
+              likeState={cardList.find((i) => i.id === card.id).likeState}
+              likeCount={cardList.find((i) => i.id === card.id).likeCount}
               id={card.id}
               key={card.id}
               name={card.name}
@@ -63,8 +63,8 @@ const MainPage = ({ cardList, handleLike }) => {
           {thirdPart.map((card) => (
             <Card
               handleLike={() => handleLike(card.id)}
-              likeState={cardList.find((like) => like.id === card.id).likeState}
-              likeCount={cardList.find((like) => like.id === card.id).likeCount}
+              likeState={cardList.find((i) => i.id === card.id).likeState}
+              likeCount={cardList.find((i) => i.id === card.id).likeCount}
               id={card.id}
               key={card.id}
               name={card.name}

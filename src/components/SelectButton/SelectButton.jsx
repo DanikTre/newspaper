@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 // import { Link } from "react-router-dom";
 
 import styled from "styled-components";
-import CloseOnClick from "../../features/clouseOnClick/CloseOnClick";
+// import CloseOnClick from "../../features/clouseOnClick/CloseOnClick";
 
 const ButtonWrapper = styled.div`
   display: ${({ display }) => display || "none"};
@@ -123,97 +123,52 @@ const GradientDiv = styled.div`
   border-radius: 8px;
 `;
 
-function SelectButton({ display, width, options, className, value, onChange }) {
-  const [opened, setOpened] = useState(false);
-  const [selected, setSelected] = useState(options[0].id);
-  // const handleClick = (value) => {
-  //   setSelected(value);
-  // };
-
-  // const handleSelectClick = () => {
-  //   setOpened(!value);
-  // };
-
-  const outsideHandler = () => {
-    setOpened(false);
-  };
-
+function SelectButton({
+  display,
+  width,
+  options,
+  className,
+  selected,
+  ChangeOption,
+  opened,
+  handleOpen,
+}) {
   const onClickItems = (id) => {
-    onChange(id);
-    setOpened(!opened);
+    handleOpen();
+    ChangeOption(id);
   };
 
-  const selectedItem = options.find((i) => i.id === value);
+  const selectedItem = options.find((i) => i.id === selected);
   const hoveredItem = options.find((i) => i.id === selected);
-  useEffect(() => {
-    setSelected(value);
-  }, [value]);
-
-  const onKeyUp = (e) => {
-    for (let i = 0; i < options.length; i++) {
-      if (e.key === "ArrowDown") {
-        if (options[i].id === hoveredItem?.value) {
-          if (options[i + 1]) {
-            setSelected(options[i + 1].id);
-            return;
-          }
-        }
-      }
-      if (e.key === "ArrowUp") {
-        if (options[i].id === hoveredItem?.value) {
-          if (options[i - 1]) {
-            setSelected(options[i - 1].id);
-            return;
-          }
-        }
-      }
-      if (!selectedItem) {
-        onChange(options[0].id);
-      }
-    }
-    if (e.key === "Enter") {
-      setOpened(false);
-      onChange(selected);
-    }
-    if (e.key === "Escape") {
-      setOpened(false);
-    }
-  };
 
   return (
-    <CloseOnClick outsideHandler={outsideHandler}>
-      <ButtonWrapper
-        display={display}
-        tabIndex={0}
-        onKeyUp={onKeyUp}
-        className={className}
-        width={width}
-      >
-        <SelectWrapper width={width}>
-          <Select active={opened} onClick={() => setOpened(!opened)}>
-            {selectedItem && selectedItem.name}
-            {/* {options.find((item) => item.value === selected).name} */}
-          </Select>
-          <Options active={opened}>
-            {options.map((item) => (
-              // <Link to={PATH.item.value}>
-              <Option
-                className={hoveredItem === item ? "selected" : ""}
-                key={item.id}
-                onMouseEnter={() => {
-                  setSelected(item.id);
-                }}
-                onClick={() => onClickItems(item.id)}
-              >
-                {item.name}
-              </Option>
-              // </Link>
-            ))}
-            <GradientDiv width={width} />
-          </Options>
-        </SelectWrapper>
-      </ButtonWrapper>
-    </CloseOnClick>
+    <ButtonWrapper
+      display={display}
+      tabIndex={0}
+      className={className}
+      width={width}
+    >
+      <SelectWrapper width={width}>
+        <Select active={opened} onClick={handleOpen}>
+          {selectedItem && selectedItem.name}
+          {/* {options.find((item) => item.value === selected).name} */}
+        </Select>
+        <Options active={opened}>
+          {options.map((item) => (
+            // <Link to={PATH.item.value}>
+            <Option
+              className={hoveredItem === item ? "selected" : ""}
+              key={item.id}
+              onClick={() => onClickItems(item.id)}
+            >
+              {item.name}
+            </Option>
+            // </Link>
+          ))}
+          <GradientDiv width={width} />
+        </Options>
+      </SelectWrapper>
+    </ButtonWrapper>
   );
 }
 
