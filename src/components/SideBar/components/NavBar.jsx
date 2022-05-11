@@ -89,12 +89,14 @@ const NewsButton = styled.button`
   cursor: pointer;
 `;
 
-function NavBar(props) {
+function NavBar({ logInUser }) {
   return (
     <Wrapper>
-      <SettingsButton>Settings</SettingsButton>
-      <SavedPostsButton>Saved Posts</SavedPostsButton>
-      <NewsButton>News</NewsButton>
+      <SettingsButton onClick={() => logInUser(0)}>Settings</SettingsButton>
+      <SavedPostsButton onClick={() => logInUser(1)}>
+        Saved Posts
+      </SavedPostsButton>
+      <NewsButton onClick={() => logInUser(2)}>News</NewsButton>
     </Wrapper>
   );
 }

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import LikeImage from "./components/LikeImage";
 
 const LikeWrapper = styled.button`
+  padding: 6px 0 0 0;
   display: flex;
   align-items: center;
   border: 0px;
@@ -11,9 +12,9 @@ const LikeWrapper = styled.button`
 `;
 
 const LikeButtonTxt = styled.span`
-  width: 49px;
   height: 14px;
 
+  margin: 0 0 0px 8px;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;

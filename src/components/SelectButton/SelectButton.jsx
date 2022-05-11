@@ -2,6 +2,7 @@
 // import { Link } from "react-router-dom";
 
 import styled from "styled-components";
+
 // import CloseOnClick from "../../features/clouseOnClick/CloseOnClick";
 
 const ButtonWrapper = styled.div`
@@ -155,7 +156,7 @@ function SelectButton({
         </Select>
         <Options active={opened}>
           {options.map((item) => (
-            // <Link to={PATH.item.value}>
+            // <Link to={PATHS[item.id]}>
             <Option
               className={hoveredItem === item ? "selected" : ""}
               key={item.id}

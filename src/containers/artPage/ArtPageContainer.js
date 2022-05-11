@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
+import { handleLikeAC } from "../../overallReducer";
 import ArtPage from "./ArtPage";
-import { handleFollowAC, handleLikeAC } from "./components/artPageReducer";
+import { handleFollowAC } from "./components/artPageReducer";
 
 let mapStateToProps = (state) => {
   return {

@@ -8,7 +8,7 @@ export const VIEW = Object.freeze({
 export const PATHS = Object.freeze({
   [VIEW.MAIN]: "/main",
   [VIEW.CARD]: "/card/:id",
-  [VIEW.ART]: "/art",
+  [VIEW.ART]: "/art/:id",
   [VIEW.REDIRECT]: "/",
 });
 

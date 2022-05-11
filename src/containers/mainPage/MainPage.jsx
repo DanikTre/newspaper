@@ -6,9 +6,9 @@ import {
 
 import styled from "styled-components";
 
-import HeaderContainer from "../../components/header/HeaderContainer";
 import Card from "./components/card/Card";
 import StrokeButtons from "../../components/strokeButtons/StrokeButtons";
+import HeaderContainer from "../header/HeaderContainer";
 
 const StyledCard = styled(Card)`
   margin: 0 24px 24px 0;
@@ -18,13 +18,14 @@ const StyledCard = styled(Card)`
 //
 const MainPage = ({ cardList, handleLike }) => {
   // Card array split
-
   const cardListCopy = [...cardList];
   const threePartIndex = Math.floor(cardList.length / 3);
 
   const thirdPart = cardListCopy.splice(-threePartIndex);
   const secondPart = cardListCopy.splice(-threePartIndex);
   const firstPart = cardListCopy;
+
+  console.log(firstPart);
 
   return (
     <CenteredWrapper>
@@ -43,6 +44,7 @@ const MainPage = ({ cardList, handleLike }) => {
               key={card.id}
               name={card.name}
               src={card.src}
+              isArticle={!!card.isArticle}
             />
           ))}
         </ColumnCardWrapper>
@@ -56,6 +58,7 @@ const MainPage = ({ cardList, handleLike }) => {
               key={card.id}
               name={card.name}
               src={card.src}
+              isArticle={!!card.isArticle}
             />
           ))}
         </ColumnCardWrapper>
@@ -69,6 +72,7 @@ const MainPage = ({ cardList, handleLike }) => {
               key={card.id}
               name={card.name}
               src={card.src}
+              isArticle={!!card.isArticle}
             />
           ))}
         </ColumnCardWrapper>

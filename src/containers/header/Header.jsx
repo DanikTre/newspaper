@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import SearchBar from "../../components/searchBar/SearchBar";
+import SelectButton from "../../components/SelectButton/SelectButton";
 
-import SearchBar from "../searchBar/SearchBar";
-import SelectButton from "../SelectButton/SelectButton";
 import Arrow from "./Arrow";
 
 const HeaderWrapper = styled.header`
@@ -114,8 +114,10 @@ function Header({
   topicOpened,
   weekOpened,
   handleOpen,
-  handleTopicSelectOption,
-  handleWeekSelectOption,
+  handleSelectOption,
+  handleSearchBarNewText,
+  searchBarText,
+  handleSearchClick,
 }) {
   return (
     <HeaderWrapper>
@@ -133,13 +135,19 @@ function Header({
         </ArrowTxtWrapper>
       </LeftSideHeader>
       <RightSideHeader>
-        <SearchBar />
+        <SearchBar
+          handleSearchBarNewText={handleSearchBarNewText}
+          searchBarText={searchBarText}
+          handleSearchClick={handleSearchClick}
+        />
         <TopicThisWeekButtons>
           <StyledSelectButton
             display={SelectButtonsDisplay}
             options={topicOptions}
             selected={topicSelected}
-            ChangeOption={handleTopicSelectOption}
+            ChangeOption={(optionID) =>
+              handleSelectOption("topicSelect", optionID)
+            }
             opened={topicOpened}
             handleOpen={() => handleOpen("topicSelect")}
           />
@@ -148,7 +156,9 @@ function Header({
             width={"126px"}
             options={weekOptions}
             selected={weekSelected}
-            ChangeOption={handleWeekSelectOption}
+            ChangeOption={(optionID) =>
+              handleSelectOption("weekSelect", optionID)
+            }
             opened={weekOpened}
             handleOpen={() => handleOpen("weekSelect")}
           />

@@ -1,8 +1,9 @@
 import { combineReducers, createStore } from "redux";
-import HeaderReducer from "../components/header/HeaderReducer";
-import ArtPageReducer from "../containers/artPage/components/artPageReducer";
-import MainPageReducer from "../containers/mainPage/components/mainPageReducer";
 import OverallReducer from "../overallReducer";
+import HeaderReducer from "../containers/header/HeaderReducer";
+import MainPageReducer from "../containers/mainPage/components/mainPageReducer";
+
+import ArtPageReducer from "../containers/artPage/components/artPageReducer";
 
 const reducers = combineReducers({
   Overall: OverallReducer,

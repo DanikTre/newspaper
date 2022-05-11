@@ -1,7 +1,7 @@
+import HeaderContainer from "../header/HeaderContainer";
 import { LeftSideCenteredWrapper } from "./artStyledComponents";
 
 import ArtPage1 from "./components/ArtPage1";
-import HeaderContainer from "../../components/header/HeaderContainer";
 
 function ArtPage({ creatorsToFollow, artPosts, handleLike, handleFollow }) {
   return (

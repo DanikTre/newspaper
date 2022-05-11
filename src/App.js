@@ -7,15 +7,17 @@ import {
   RightSideWrapper,
 } from "./appStyledComponents";
 
-import AccountImg1 from "./components/SideBar/AvatarImg.png";
-
 import SideBar from "./components/SideBar/SideBar";
 import { RouteStucture } from "./routes/routes";
 
-function App() {
+function App({ currentUser, logInUser, logOutUser }) {
   useEffect(() => {
     smoothscroll.polyfill();
   });
+  // if (!currentUser.loginState) {
+  //   logInUser(1);
+  // }
+  const fullName = currentUser.user.firstName + " " + currentUser.user.lastName;
 
   return (
     <Wrapper>
@@ -25,7 +27,12 @@ function App() {
         </Router>
       </LeftSideWrapper>
       <RightSideWrapper>
-        <SideBar name="Alex Barsuk" src={AccountImg1} />
+        <SideBar
+          name={fullName}
+          avatarImg={currentUser.user.avatarImg}
+          logOutUser={logOutUser}
+          logInUser={logInUser}
+        />
       </RightSideWrapper>
     </Wrapper>
   );

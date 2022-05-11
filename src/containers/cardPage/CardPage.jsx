@@ -2,7 +2,7 @@ import { LeftSideCenteredWrapper } from "./cardPageStyledComponents";
 
 import CardBlock1 from "./components/CardBlock1";
 import StrokeButtons from "../../components/strokeButtons/StrokeButtons";
-import HeaderContainer from "../../components/header/HeaderContainer";
+import HeaderContainer from "../header/HeaderContainer";
 
 function CardPage({ cardList, handleLike, handleSave }) {
   return (

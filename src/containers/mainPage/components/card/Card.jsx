@@ -62,11 +62,15 @@ function Card({
   likeState,
   likeCount,
   handleLike,
+  isArticle,
 }) {
+  const path = isArticle ? getPath(VIEW.ART) : getPath(VIEW.CARD);
+  console.log(path);
+
   return (
     <CardWrapper className={className} width={width} margin={margin}>
       <Link
-        to={injectPathParams(getPath(VIEW.CARD), { id })}
+        to={injectPathParams(path, { id })}
         style={{ textDecoration: "none" }}
       >
         <Card1Img src={src} alt="Card Image" />
@@ -75,7 +79,7 @@ function Card({
         <Card1Txt>{name}</Card1Txt>
         <ButtonLikeWrapper>
           <Link
-            to={injectPathParams(getPath(VIEW.CARD), { id })}
+            to={injectPathParams(path, { id })}
             style={{ textDecoration: "none" }}
           >
             <ReadMoreButton>Read this</ReadMoreButton>

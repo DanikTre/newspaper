@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import stockAvatarImg from "../24-248253_user-profile-default-image-png-clipart-png-download.png";
 
 const AccountImgNameWrapper = styled.div`
   width: 142px;
@@ -34,11 +35,16 @@ const AccountName = styled.span`
   color: #3a4159;
 `;
 
-function AccountImgName(props) {
+function AccountImgName({ avatarImg, name }) {
   return (
     <AccountImgNameWrapper>
-      <AccountImg src={props.src} alt="Account Image" />
-      <AccountName>{props.name}</AccountName>
+      <AccountImg
+        src={avatarImg !== undefined ? avatarImg : stockAvatarImg}
+        alt="Account Image"
+      />
+      <AccountName>
+        {name !== "undefined undefined" ? name : "User"}
+      </AccountName>
     </AccountImgNameWrapper>
   );
 }

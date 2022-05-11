@@ -5,8 +5,8 @@ import PostImg3 from "./assets/Img3.jpg";
 import AvatarImg2 from "./assets/AvatarImg2.png";
 import AvatarImg3 from "./assets/AvatarImg3.jpg";
 
-const HANDLE_FOLLOW = "HANDLE-FOLLOW";
-const HANDLE_LIKE = "HANDLE-LIKE";
+const HANDLE_FOLLOW_ART = "HANDLE_FOLLOW_ART";
+const HANDLE_LIKE_ART = "HANDLE_LIKE_ART";
 
 const initialState = {
   artPosts: [
@@ -102,7 +102,7 @@ const initialState = {
 
 const ArtPageReducer = (state = initialState, action) => {
   switch (action.type) {
-    case HANDLE_FOLLOW: {
+    case HANDLE_FOLLOW_ART: {
       const index = state.creatorsToFollow.findIndex(
         (el) => el.id === action.id
       );
@@ -113,8 +113,7 @@ const ArtPageReducer = (state = initialState, action) => {
 
       return { ...state, creatorsToFollow: copy };
     }
-    case HANDLE_LIKE: {
-      debugger;
+    case HANDLE_LIKE_ART: {
       const index = state.artPosts.findIndex((el) => el.id === action.id);
       const copy = JSON.parse(JSON.stringify(state.artPosts));
       const { likeState } = copy[index];
@@ -135,11 +134,11 @@ const ArtPageReducer = (state = initialState, action) => {
 };
 
 export const handleFollowAC = (id) => ({
-  type: HANDLE_FOLLOW,
+  type: HANDLE_FOLLOW_ART,
   id,
 });
-export const handleLikeAC = (id) => ({
-  type: HANDLE_LIKE,
+export const handleLikeAC1 = (id) => ({
+  type: HANDLE_LIKE_ART,
   id,
 });
 

@@ -11,16 +11,14 @@ const CenteredWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-
-  /* padding: 48px 0 80px 0; */
 `;
 
-function SideBar(props) {
+function SideBar({ avatarImg, name, logOutUser, logInUser }) {
   return (
     <CenteredWrapper>
-      <AccountImgName src={props.src} name={props.name} />
-      <NavBar />
-      <LogOutButton />
+      <AccountImgName avatarImg={avatarImg} name={name} />
+      <NavBar logInUser={logInUser} />
+      <LogOutButton logOutUser={logOutUser} />
     </CenteredWrapper>
   );
 }

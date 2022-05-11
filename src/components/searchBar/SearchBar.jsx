@@ -48,12 +48,37 @@ const Line = styled.div`
   cursor: default;
 `;
 
-function SearchBar() {
+function SearchBar({
+  handleSearchBarNewText,
+  searchBarText,
+  handleSearchClick,
+}) {
+  const onTextChange = (e) => {
+    let text = e.target.value;
+    handleSearchBarNewText(text);
+  };
+
+  const onEnter = (e) => {
+    if (e.key === "Enter") {
+      handleSearchClick();
+    }
+  };
+
   return (
     <SearchBarWrapper>
-      <SearchIcon src={SearchBarIcon} alt="Search Icon" />
+      <SearchIcon
+        src={SearchBarIcon}
+        alt="Search Icon"
+        onClick={handleSearchClick}
+      />
       <TxtLineWrapper>
-        <SearchTxt type="text" placeholder="Search..." />
+        <SearchTxt
+          onKeyUp={onEnter}
+          onChange={onTextChange}
+          value={searchBarText}
+          type="text"
+          placeholder="Search..."
+        />
         <Line />
       </TxtLineWrapper>
     </SearchBarWrapper>

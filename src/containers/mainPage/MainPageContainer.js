@@ -10,8 +10,9 @@ let mapStateToProps = (state) => {
 };
 let mapDispatchToProps = (dispatch) => {
   return {
-    handleLike: (cardID) => {
-      dispatch(handleLikeAC(cardID));
+    handleLike: (id) => {
+      // debugger;
+      dispatch(handleLikeAC(id));
     },
   };
 };
