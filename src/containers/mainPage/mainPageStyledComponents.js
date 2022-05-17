@@ -6,7 +6,7 @@ export const CenteredWrapper = styled.div`
 
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  /* align-items: stretch; */
   justify-content: center;
 `;
 
@@ -15,6 +15,7 @@ export const CardsWrapper = styled.div`
   align-items: flex-start;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: 48px;
 `;
 
 export const ColumnCardWrapper = styled.div`

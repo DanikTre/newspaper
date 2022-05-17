@@ -75,7 +75,7 @@ function SearchBar({
         <SearchTxt
           onKeyUp={onEnter}
           onChange={onTextChange}
-          value={searchBarText}
+          value={localStorage.getItem("search") || searchBarText}
           type="text"
           placeholder="Search..."
         />

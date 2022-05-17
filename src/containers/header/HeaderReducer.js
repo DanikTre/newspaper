@@ -3,26 +3,27 @@ const HANDLE_SELECT_HEADER = "HANDLE_SELECT_HEADER";
 
 const initialState = {
   topicSelect: {
-    selected: 0,
+    selected: null,
     opened: false,
     options: [
-      { name: "Topic", id: 0 },
-      { name: "Politic", id: 1 },
-      { name: "Art", id: 2 },
-      { name: "Culture", id: 3 },
-      { name: "Economic", id: 4 },
-      { name: "Something...", id: 5 },
+      { name: "Choose Topic", id: null },
+      { name: "Politic", id: "6281247377b190429b07e29a" },
+      { name: "Art", id: "6281247cf6499193ed6efd22" },
+      { name: "Culture", id: "6281248373cc3d7b4b94b01e" },
+      { name: "Economic", id: "6281248bf4471737167be3ad" },
+      { name: "Something...", id: "6281249143b7a30f5e2120e9" },
     ],
   },
   weekSelect: {
-    selected: 0,
+    selected: null,
     opened: false,
     options: [
-      { name: "This Day", id: 0 },
-      { name: "This Week", id: 1 },
-      { name: "This Month", id: 2 },
-      { name: "This Quarter", id: 3 },
-      { name: "This Year", id: 4 },
+      { name: "All time", id: null },
+      { name: "This Day", id: "6282297eb56ab3572e2d492c" },
+      { name: "This Week", id: "62822281a2cb7f5a9e0855f0" },
+      { name: "This Month", id: "62822286bf078a1a50d53a78" },
+      { name: "This Quarter", id: "6282228c7ea92d7a118753e7" },
+      { name: "This Year", id: "6282229137fa883039fdeb83" },
     ],
   },
 };
@@ -53,11 +54,11 @@ const HeaderReducer = (state = initialState, action) => {
   }
 };
 
-export const setOpenedAC = (whichButton) => ({
+export const setOpened = (whichButton) => ({
   type: SET_OPENED_HEADER,
   whichButton,
 });
-export const handleSelectOptionAC = (whichButton, optionID) => ({
+export const handleSelectOption = (whichButton, optionID) => ({
   type: HANDLE_SELECT_HEADER,
   whichButton,
   optionID,

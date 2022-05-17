@@ -65,7 +65,6 @@ function Card({
   isArticle,
 }) {
   const path = isArticle ? getPath(VIEW.ART) : getPath(VIEW.CARD);
-  console.log(path);
 
   return (
     <CardWrapper className={className} width={width} margin={margin}>

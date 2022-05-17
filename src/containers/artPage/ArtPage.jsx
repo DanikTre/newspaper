@@ -1,3 +1,4 @@
+import H1Text from "../../components/h1/H1Text";
 import HeaderContainer from "../header/HeaderContainer";
 import { LeftSideCenteredWrapper } from "./artStyledComponents";
 
@@ -12,6 +13,7 @@ function ArtPage({ creatorsToFollow, artPosts, handleLike, handleFollow }) {
         txtdisplay="block"
         arrowdisplay="block"
       ></HeaderContainer>
+      <H1Text arrowdisplay="block">Art</H1Text>
       <ArtPage1
         artPosts={artPosts}
         handleLike={handleLike}

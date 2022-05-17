@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { handleLikeAC, handleSaveAC } from "../../overallReducer";
+import { handleLike, handleSave } from "../../overallReducer";
 import CardPage from "./CardPage";
 
 let mapStateToProps = (state) => {
@@ -7,15 +7,5 @@ let mapStateToProps = (state) => {
     cardList: state.Overall.cardList,
   };
 };
-let mapDispatchToProps = (dispatch) => {
-  return {
-    handleLike: (id) => {
-      dispatch(handleLikeAC(id));
-    },
-    handleSave: (id) => {
-      dispatch(handleSaveAC(id));
-    },
-  };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(CardPage);
+export default connect(mapStateToProps, { handleLike, handleSave })(CardPage);

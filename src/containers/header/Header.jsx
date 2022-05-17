@@ -7,7 +7,7 @@ import Arrow from "./Arrow";
 
 const HeaderWrapper = styled.header`
   width: 100%;
-  padding: 0 24px 48px 0;
+  padding: 0 24px 0px 0;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -26,13 +26,13 @@ const ArrowTxtWrapper = styled.div`
   justify-content: space-around;
 `;
 
-const LogoTxt = styled.h1`
+const LogoTxt = styled.div`
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 113px;
   height: 10px;
 
-  margin-bottom: 91px;
+  margin: 0 0 91px 5px;
 
   font-family: "Montserrat";
   font-style: normal;
@@ -113,11 +113,13 @@ function Header({
   weekSelected,
   topicOpened,
   weekOpened,
-  handleOpen,
+  setOpened,
   handleSelectOption,
-  handleSearchBarNewText,
+  updateSearchBarText,
   searchBarText,
   handleSearchClick,
+  handleFilterCardsByTopic,
+  handleFilterCardsByWeek,
 }) {
   return (
     <HeaderWrapper>
@@ -125,18 +127,18 @@ function Header({
         <Link to="/main" style={{ textDecoration: "none" }}>
           <LogoTxt>DIALOGUE. online</LogoTxt>
         </Link>
-        <ArrowTxtWrapper>
+        {/* <ArrowTxtWrapper>
           <ArrowWrapper arrowdisplay={arrowdisplay}>
             <Link to="/main">
               <Arrow />
             </Link>
           </ArrowWrapper>
           <HeaderTxt txtdisplay={txtdisplay}>{headerText}</HeaderTxt>
-        </ArrowTxtWrapper>
+        </ArrowTxtWrapper> */}
       </LeftSideHeader>
       <RightSideHeader>
         <SearchBar
-          handleSearchBarNewText={handleSearchBarNewText}
+          handleSearchBarNewText={updateSearchBarText}
           searchBarText={searchBarText}
           handleSearchClick={handleSearchClick}
         />
@@ -145,22 +147,24 @@ function Header({
             display={SelectButtonsDisplay}
             options={topicOptions}
             selected={topicSelected}
-            ChangeOption={(optionID) =>
-              handleSelectOption("topicSelect", optionID)
-            }
+            ChangeOption={(optionID) => {
+              handleSelectOption("topicSelect", optionID);
+              handleFilterCardsByTopic(optionID);
+            }}
             opened={topicOpened}
-            handleOpen={() => handleOpen("topicSelect")}
+            handleOpen={() => setOpened("topicSelect")}
           />
           <SelectButton
             display={SelectButtonsDisplay}
             width={"126px"}
             options={weekOptions}
             selected={weekSelected}
-            ChangeOption={(optionID) =>
-              handleSelectOption("weekSelect", optionID)
-            }
+            ChangeOption={(optionID) => {
+              handleSelectOption("weekSelect", optionID);
+              handleFilterCardsByWeek(optionID);
+            }}
             opened={weekOpened}
-            handleOpen={() => handleOpen("weekSelect")}
+            handleOpen={() => setOpened("weekSelect")}
           />
         </TopicThisWeekButtons>
       </RightSideHeader>

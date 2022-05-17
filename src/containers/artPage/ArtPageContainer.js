@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
-import { handleLikeAC } from "../../overallReducer";
 import ArtPage from "./ArtPage";
-import { handleFollowAC } from "./components/artPageReducer";
+import { handleFollow, handleLike } from "./components/artPageReducer";
 
 let mapStateToProps = (state) => {
   return {
@@ -9,16 +8,5 @@ let mapStateToProps = (state) => {
     creatorsToFollow: state.ArtPage.creatorsToFollow,
   };
 };
-let mapDispatchToProps = (dispatch) => {
-  return {
-    handleLike: (id) => {
-      console.log("smthn");
-      dispatch(handleLikeAC(id));
-    },
-    handleFollow: (id) => {
-      dispatch(handleFollowAC(id));
-    },
-  };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(ArtPage);
+export default connect(mapStateToProps, { handleLike, handleFollow })(ArtPage);

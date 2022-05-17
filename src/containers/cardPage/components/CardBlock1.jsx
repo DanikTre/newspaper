@@ -37,6 +37,7 @@ const PageTxt = styled.h1`
   width: 526px;
   height: 128px;
   left: 0px;
+  top: 20px
   margin: 0 0 15px 0;
 
   font-family: "Poppins";

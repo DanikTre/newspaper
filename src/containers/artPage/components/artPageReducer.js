@@ -16,7 +16,7 @@ const initialState = {
       src: PostImg1,
       date: "Sep 15",
       bred: "11 min read",
-      id: 0,
+      id: "628380c0c91334f6d194f2a7",
       likeState: true,
       likeCount: 13,
     },
@@ -26,7 +26,7 @@ const initialState = {
       src: PostImg2,
       date: "Mar 02",
       bred: "34 min read",
-      id: 1,
+      id: "628380c5fce5cbce5a97fd28",
       likeState: true,
       likeCount: 56,
     },
@@ -36,7 +36,7 @@ const initialState = {
       src: PostImg3,
       date: "Jan 21",
       bred: "2 min read",
-      id: 2,
+      id: "628380ccbf662676251f4aed",
       likeState: false,
       likeCount: 95,
     },
@@ -46,7 +46,7 @@ const initialState = {
       src: PostImg1,
       date: "Sep 15",
       bred: "11 min read",
-      id: 3,
+      id: "628380d2ef3a26d4860ca736",
       likeState: true,
       likeCount: 147,
     },
@@ -56,7 +56,7 @@ const initialState = {
       src: PostImg1,
       date: "Sep 15",
       bred: "11 min read",
-      id: 4,
+      id: "628380d9f5724af636f7e5e2",
       likeState: true,
       likeCount: 112,
     },
@@ -66,35 +66,35 @@ const initialState = {
       name: "Harley Spector",
       text: "The master-builder of human happiness...",
       src: AvatarImg2,
-      id: 0,
+      id: "628380e4c2146258bc456b9b",
       followState: true,
     },
     {
       name: "Lashped Volfovich",
       text: "The master-durilder of human society...",
       src: AvatarImg3,
-      id: 1,
+      id: "628380e9a0e120ff007b1208",
       followState: false,
     },
     {
       name: "Harley Devidson",
       text: "The master-chef of motor happiness...",
       src: AvatarImg2,
-      id: 2,
+      id: "628380ef1c822f9bca749c30",
       followState: true,
     },
     {
       name: "James May",
       text: "The of(f) human ...",
       src: AvatarImg2,
-      id: 3,
+      id: "628380f4b548f00f0427e764",
       followState: false,
     },
     {
       name: "Kirill Maskim",
       text: "Laster-bodibilder of numeric dignaty...",
       src: AvatarImg3,
-      id: 4,
+      id: "628380f98a9f50729a0cf056",
       followState: true,
     },
   ],
@@ -133,11 +133,11 @@ const ArtPageReducer = (state = initialState, action) => {
   }
 };
 
-export const handleFollowAC = (id) => ({
+export const handleFollow = (id) => ({
   type: HANDLE_FOLLOW_ART,
   id,
 });
-export const handleLikeAC1 = (id) => ({
+export const handleLike = (id) => ({
   type: HANDLE_LIKE_ART,
   id,
 });

@@ -1,5 +1,6 @@
+import { useRef } from "react";
 import { useEffect } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import smoothscroll from "smoothscroll-polyfill";
 import {
   Wrapper,
@@ -11,20 +12,25 @@ import SideBar from "./components/SideBar/SideBar";
 import { RouteStucture } from "./routes/routes";
 
 function App({ currentUser, logInUser, logOutUser }) {
+  const { firstName, lastName } = currentUser.user;
+  const fullName = firstName + " " + lastName;
+  const leftSideRef = useRef(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    leftSideRef &&
+      leftSideRef.current &&
+      leftSideRef.current.scroll({ top: 0, left: 0, behavior: "instant" });
+  }, [location]);
+
   useEffect(() => {
     smoothscroll.polyfill();
   });
-  // if (!currentUser.loginState) {
-  //   logInUser(1);
-  // }
-  const fullName = currentUser.user.firstName + " " + currentUser.user.lastName;
 
   return (
     <Wrapper>
-      <LeftSideWrapper>
-        <Router>
-          <RouteStucture />
-        </Router>
+      <LeftSideWrapper ref={leftSideRef}>
+        <RouteStucture />
       </LeftSideWrapper>
       <RightSideWrapper>
         <SideBar

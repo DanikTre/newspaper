@@ -30,7 +30,7 @@ export const LeftSideWrapper = styled.div`
 
 export const LeftSideCenteredWrapper = styled.div`
   position: relative;
-  width: 87%;
+  width: calc(100% - 188px);
   padding: 0 85px 0 77px;
   /* width: 90%; */
 

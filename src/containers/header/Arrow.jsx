@@ -1,4 +1,4 @@
-const ArrowImg = ({ selected }) => {
+const ArrowImg = () => {
   return (
     <svg
       width="17"

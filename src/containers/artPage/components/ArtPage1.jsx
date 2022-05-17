@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  margin-top: 48px;
 `;
 
 const PostsCreatorsWrapper = styled.div`

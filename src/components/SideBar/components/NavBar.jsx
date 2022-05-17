@@ -92,11 +92,15 @@ const NewsButton = styled.button`
 function NavBar({ logInUser }) {
   return (
     <Wrapper>
-      <SettingsButton onClick={() => logInUser(0)}>Settings</SettingsButton>
-      <SavedPostsButton onClick={() => logInUser(1)}>
+      <SettingsButton onClick={() => logInUser("6283807a323d6f18bd27d11c")}>
+        Settings
+      </SettingsButton>
+      <SavedPostsButton onClick={() => logInUser("62838088e891342e8d2e3d9a")}>
         Saved Posts
       </SavedPostsButton>
-      <NewsButton onClick={() => logInUser(2)}>News</NewsButton>
+      <NewsButton onClick={() => logInUser("628380903319f5fb46983613")}>
+        News
+      </NewsButton>
     </Wrapper>
   );
 }

@@ -1,11 +1,13 @@
 import { connect } from "react-redux";
 import {
-  handleSearchClickAC,
-  updateSearchBarTextAC,
+  handleSearchClick,
+  updateSearchBarText,
+  handleFilterCardsByTopic,
+  handleFilterCardsByWeek,
 } from "../../overallReducer";
 
 import Header from "./Header";
-import { handleSelectOptionAC, setOpenedAC } from "./HeaderReducer";
+import { handleSelectOption, setOpened } from "./HeaderReducer";
 
 let mapStateToProps = (state) => {
   const HeaderState = state.Header;
@@ -19,22 +21,12 @@ let mapStateToProps = (state) => {
     searchBarText: state.Overall.searchBar.currentText,
   };
 };
-let mapDispatchToProps = (dispatch) => {
-  return {
-    handleSelectOption: (whichButton, optionID) => {
-      dispatch(handleSelectOptionAC(whichButton, optionID));
-    },
 
-    handleOpen: (whichButton) => {
-      dispatch(setOpenedAC(whichButton));
-    },
-    handleSearchBarNewText: (text) => {
-      dispatch(updateSearchBarTextAC(text));
-    },
-    handleSearchClick: () => {
-      dispatch(handleSearchClickAC());
-    },
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, {
+  handleSelectOption,
+  setOpened,
+  updateSearchBarText,
+  handleSearchClick,
+  handleFilterCardsByTopic,
+  handleFilterCardsByWeek,
+})(Header);
