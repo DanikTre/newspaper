@@ -31,24 +31,8 @@ const LeftSideDiv = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-`;
 
-const PageTxt = styled.h1`
-  width: 526px;
-  height: 128px;
-  left: 0px;
-  top: 20px
-  margin: 0 0 15px 0;
-
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 50px;
-  line-height: 66px;
-
-  letter-spacing: 0.7px;
-
-  color: #3a4159;
+  margin-right: 20px;
 `;
 
 const ButtonsRow = styled.div`
@@ -119,7 +103,6 @@ function CardBlock1({
     <InfoWrapper>
       <RowInfoWrapper>
         <LeftSideDiv>
-          <PageTxt>Bruce Nauman: new video“le man”</PageTxt>
           <ButtonsRow>
             <ButtonsRowTxt>by Sam Dekker</ButtonsRowTxt>
             <LikeButtonWrapper>

@@ -3,23 +3,21 @@ import styled from "styled-components";
 import Arrow from "../../containers/header/Arrow";
 
 const ArrowTxtWrapper = styled.div`
-  display: flex;
-  align-items: flex-start;
+  max-width: 524px;
 `;
 
 const HeaderTxt = styled.span`
-  display: ${({ txtdisplay }) => txtdisplay || "block"};
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  display: inline;
+  /* white-space: nowrap; */
 
   width: 634px;
   height: 33px;
 
   font-family: "Poppins";
   font-style: normal;
-  font-weight: 600;
-  font-size: 70px;
-  line-height: 23%;
+  font-weight: ${({ fontWeight }) => fontWeight || "600"};
+  font-size: ${({ fontSize }) => fontSize + "px"};
+  line-height: 132%;
 
   letter-spacing: 0.7px;
 
@@ -29,23 +27,40 @@ const HeaderTxt = styled.span`
 `;
 
 const ArrowWrapper = styled.div`
-  margin-right: 20px;
+  /* margin-right: 20px; */
+  width: 36px;
+  position: relative;
+  height: ${({ height }) => height + "px"};
 
-  display: ${({ arrowdisplay }) => arrowdisplay || "none"};
+  display: inline-block;
   cursor: pointer;
 
   &:hover {
   }
 `;
-const H1Text = ({ children, LinkTo, txtdisplay, arrowdisplay }) => {
+const StyledLink = styled(Link)`
+  position: absolute;
+  top: 50%;
+`;
+const H1Text = ({
+  children,
+  linkTo,
+  fontWeight,
+  fontSize = 70,
+  arrowdisplay,
+}) => {
   return (
     <ArrowTxtWrapper>
-      <ArrowWrapper arrowdisplay={arrowdisplay}>
-        <Link to={LinkTo || "/"}>
-          <Arrow />
-        </Link>
-      </ArrowWrapper>
-      <HeaderTxt txtdisplay={txtdisplay}>{children}</HeaderTxt>
+      {arrowdisplay && (
+        <ArrowWrapper width={fontSize} height={fontSize}>
+          <StyledLink to={linkTo || "/"}>
+            <Arrow />
+          </StyledLink>
+        </ArrowWrapper>
+      )}
+      <HeaderTxt fontWeight={fontWeight} fontSize={fontSize}>
+        {children}
+      </HeaderTxt>
     </ArrowTxtWrapper>
   );
 };

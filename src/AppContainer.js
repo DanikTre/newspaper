@@ -1,11 +1,13 @@
 import { connect } from "react-redux";
 import App from "./App";
-import { logInUser, logOutUser } from "./overallReducer";
+import { logOut } from "./containers/logInPage/LogInPageReducer";
 
 let mapStateToProps = (state) => {
   return {
-    currentUser: state.Overall.currentUser,
+    logInState: state.LogInPage.logIn.logInState,
+    currentUser: state.LogInPage.currentUser,
+    sideBarOpen: state.Overall.sideBarOpen,
   };
 };
 
-export default connect(mapStateToProps, { logInUser, logOutUser })(App);
+export default connect(mapStateToProps, { logOut })(App);

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const LeftSideCenteredWrapper = styled.div`
   position: relative;
   width: 87%;
-  padding: 0 85px 100px 77px;
+  padding: 45px 85px 100px 77px;
 
   display: flex;
   flex-direction: column;

@@ -30,11 +30,11 @@ export const LeftSideWrapper = styled.div`
     display: none;
   }
 
-  padding-top: 46px;
+  /* padding-top: 46px; */
 `;
 
 export const RightSideWrapper = styled.div`
-  display: flex;
+  display: ${({ sideBarOpen }) => (sideBarOpen ? "flex" : "none")};
   align-items: center;
   justify-content: center;
 

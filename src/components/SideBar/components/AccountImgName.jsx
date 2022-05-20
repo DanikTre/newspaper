@@ -18,6 +18,10 @@ const AccountImg = styled.img`
   width: 32px;
   border-radius: 32px;
   user-select: none;
+
+  &:hover {
+    box-shadow: 0px 2px 1px #828282;
+  }
 `;
 
 const AccountName = styled.span`
@@ -33,6 +37,11 @@ const AccountName = styled.span`
   letter-spacing: 0.2px;
 
   color: #3a4159;
+
+  border: none;
+  &:hover {
+    font-weight: 450;
+  }
 `;
 
 function AccountImgName({ avatarImg, name }) {

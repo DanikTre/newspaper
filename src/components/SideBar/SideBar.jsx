@@ -2,6 +2,7 @@ import styled from "styled-components";
 import NavBar from "./components/NavBar";
 import AccountImgName from "./components/AccountImgName";
 import LogOutButton from "./components/LogOutButton";
+import { Link } from "react-router-dom";
 
 const CenteredWrapper = styled.div`
   height: 100vh;
@@ -13,12 +14,18 @@ const CenteredWrapper = styled.div`
   justify-content: space-between;
 `;
 
-function SideBar({ avatarImg, name, logOutUser, logInUser }) {
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
+
+function SideBar({ avatarImg, name, logInState, logOut }) {
   return (
     <CenteredWrapper>
-      <AccountImgName avatarImg={avatarImg} name={name} />
-      <NavBar logInUser={logInUser} />
-      <LogOutButton logOutUser={logOutUser} />
+      <StyledLink to={!logInState && "/login"}>
+        <AccountImgName avatarImg={avatarImg} name={name} />
+      </StyledLink>
+      <NavBar />
+      <LogOutButton logOut={logOut} />
     </CenteredWrapper>
   );
 }

@@ -12,7 +12,9 @@ function CardPage({ cardList, handleLike, handleSave }) {
         SelectButtonsDisplay="block"
         headerText="Daily Resources"
       ></HeaderContainer>
-      <H1Text txtdisplay="none" arrowdisplay="block"></H1Text>
+      <H1Text arrowdisplay fontSize={50}>
+        Bruce Nauman: new video“le man”
+      </H1Text>
       <CardBlock1
         handleLike={() => handleLike(cardList[1].id)}
         likeState={cardList.find((i) => i.id === cardList[1].id).likeState}

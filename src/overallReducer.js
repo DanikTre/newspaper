@@ -9,15 +9,10 @@ import Img8 from "./containers/mainPage/components/card/assets/CardImg8.jpg";
 import Img9 from "./containers/mainPage/components/card/assets/CardImg9.jpg";
 import Img10 from "./containers/mainPage/components/card/assets/CardImg10.jpg";
 
-//import AccountImg1 from "./components/SideBar/AvatarImg.png";
-import AccountImg2 from "./components/SideBar/IMG_5141.jpeg";
-import AccountImg3 from "./components/SideBar/IMG_5141 copy.jpeg";
-import AccountImg4 from "./components/SideBar/birch-tree.jpeg";
-// переделать без тире, с нижним _
 const HANDLE_LIKE_OVERALL = "HANDLE_LIKE_OVERALL";
 const HANDLE_SAVE_OVERALL = "HANDLE_SAVE_OVERALL";
-const LOG_IN_USER_OVERALL = "LOG_IN_USER_OVERALL";
-const LOG_OUT_USER_OVERALL = "LOG_OUT_USER_OVERALL";
+// const LOG_IN_USER_OVERALL = "LOG_IN_USER_OVERALL";
+// const LOG_OUT_USER_OVERALL = "LOG_OUT_USER_OVERALL";
 const UPDATE_SEARCH_BAR_TEXT_OVERALL = "UPDATE_SEARCH_BAR_TEXT_OVERALL";
 const SEARCH_CLICK_OVERALL = "SEARCH_CLICK_OVERALL";
 const FILTER_CARDS_BY_TOPIC_OVERALL = "FILTER_CARDS_BY_TOPIC_OVERALL";
@@ -163,35 +158,13 @@ const initialState = {
       date: "6282229137fa883039fdeb83",
     },
   ],
-  users: [
-    {
-      id: "6283807a323d6f18bd27d11c",
-      firstName: "Alex",
-      lastName: "Barsuk",
-      avatarImg: AccountImg2,
-    },
-    {
-      id: "62838088e891342e8d2e3d9a",
-      firstName: "Danon",
-      lastName: "Trapachka",
-      avatarImg: AccountImg3,
-    },
-    {
-      id: "628380903319f5fb46983613",
-      firstName: "John",
-      lastName: "The Birch",
-      avatarImg: AccountImg4,
-    },
-  ],
-  currentUser: {
-    user: {},
-    loginState: false,
-  },
+
   searchBar: {
     currentText: "",
   },
   selectedTopicId: null,
   selectedWeekId: null,
+  sideBarOpen: false,
 };
 
 const OverallReducer = (state = initialState, action) => {
@@ -219,36 +192,37 @@ const OverallReducer = (state = initialState, action) => {
 
       return { ...state, cardList: copy };
     }
-    case LOG_IN_USER_OVERALL: {
-      if (!state.currentUser.loginState) {
-        console.log("Log In");
-        const index = state.users.findIndex((el) => el.id === action.id);
-        const copy = JSON.parse(JSON.stringify(state.users));
+    // case LOG_IN_USER_OVERALL: {
+    //   console.log("almost log in");
+    //   if (!state.currentUser.loginState) {
+    //     console.log("Log In");
+    //     const index = state.users.findIndex((el) => el.id === action.id);
+    //     const copy = JSON.parse(JSON.stringify(state.users));
 
-        return {
-          ...state,
-          currentUser: {
-            user: copy[index],
-            loginState: true,
-          },
-        };
-      }
+    //     return {
+    //       ...state,
+    //       currentUser: {
+    //         user: copy[index],
+    //         loginState: true,
+    //       },
+    //     };
+    //   }
 
-      return state;
-    }
-    case LOG_OUT_USER_OVERALL: {
-      if (state.currentUser.loginState) {
-        console.log("Log Out");
-        return {
-          ...state,
-          currentUser: {
-            user: "",
-            loginState: false,
-          },
-        };
-      }
-      return state;
-    }
+    //   return state;
+    // }
+    // case LOG_OUT_USER_OVERALL: {
+    //   if (state.currentUser.loginState) {
+    //     console.log("Log Out");
+    //     return {
+    //       ...state,
+    //       currentUser: {
+    //         user: "",
+    //         loginState: false,
+    //       },
+    //     };
+    //   }
+    //   return state;
+    // }
     case UPDATE_SEARCH_BAR_TEXT_OVERALL:
       localStorage.setItem("search", action.text);
       return {
@@ -279,13 +253,13 @@ export const handleSave = (id) => ({
   type: HANDLE_SAVE_OVERALL,
   id,
 });
-export const logInUser = (id) => ({
-  type: LOG_IN_USER_OVERALL,
-  id,
-});
-export const logOutUser = () => ({
-  type: LOG_OUT_USER_OVERALL,
-});
+// export const logInUser = (id) => ({
+//   type: LOG_IN_USER_OVERALL,
+//   id,
+// });
+// export const logOutUser = () => ({
+//   type: LOG_OUT_USER_OVERALL,
+// });
 export const updateSearchBarText = (text) => ({
   type: UPDATE_SEARCH_BAR_TEXT_OVERALL,
   text,

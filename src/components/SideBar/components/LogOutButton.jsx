@@ -33,9 +33,9 @@ const LogOutTxt = styled.span`
   letter-spacing: 0.2px;
 `;
 
-function LogOutButton({ logOutUser }) {
+function LogOutButton({ logOut }) {
   return (
-    <LogOutWrapper onClick={logOutUser}>
+    <LogOutWrapper onClick={logOut}>
       <LogOutTxt>Log Out</LogOutTxt>
       <LogOutImg />
     </LogOutWrapper>

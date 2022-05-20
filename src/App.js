@@ -11,8 +11,8 @@ import {
 import SideBar from "./components/SideBar/SideBar";
 import { RouteStucture } from "./routes/routes";
 
-function App({ currentUser, logInUser, logOutUser }) {
-  const { firstName, lastName } = currentUser.user;
+function App({ currentUser, sideBarOpen, logInState, logOut }) {
+  const { firstName, lastName } = currentUser;
   const fullName = firstName + " " + lastName;
   const leftSideRef = useRef(null);
   const location = useLocation();
@@ -30,14 +30,14 @@ function App({ currentUser, logInUser, logOutUser }) {
   return (
     <Wrapper>
       <LeftSideWrapper ref={leftSideRef}>
-        <RouteStucture />
+        <RouteStucture logInState={logInState} />
       </LeftSideWrapper>
-      <RightSideWrapper>
+      <RightSideWrapper sideBarOpen={sideBarOpen}>
         <SideBar
+          logInState={logInState}
           name={fullName}
-          avatarImg={currentUser.user.avatarImg}
-          logOutUser={logOutUser}
-          logInUser={logInUser}
+          avatarImg={currentUser.avatarImg}
+          logOut={logOut}
         />
       </RightSideWrapper>
     </Wrapper>

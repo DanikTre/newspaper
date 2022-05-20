@@ -3,8 +3,6 @@ import styled from "styled-components";
 import SearchBar from "../../components/searchBar/SearchBar";
 import SelectButton from "../../components/SelectButton/SelectButton";
 
-import Arrow from "./Arrow";
-
 const HeaderWrapper = styled.header`
   width: 100%;
   padding: 0 24px 0px 0;
@@ -16,12 +14,6 @@ const HeaderWrapper = styled.header`
 const LeftSideHeader = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-around;
-`;
-
-const ArrowTxtWrapper = styled.div`
-  display: flex;
   align-items: flex-start;
   justify-content: space-around;
 `;
@@ -45,37 +37,6 @@ const LogoTxt = styled.div`
   color: #3a4159;
 
   user-select: none;
-`;
-
-const HeaderTxt = styled.span`
-  display: ${({ txtdisplay }) => txtdisplay || "block"};
-  text-overflow: ellipsis;
-  white-space: nowrap;
-
-  width: 634px;
-  height: 33px;
-
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 70px;
-  line-height: 23%;
-
-  letter-spacing: 0.7px;
-
-  color: #3a4159;
-
-  user-select: none;
-`;
-
-const ArrowWrapper = styled.div`
-  margin-right: 20px;
-
-  display: ${({ arrowdisplay }) => arrowdisplay || "none"};
-  cursor: pointer;
-
-  &:hover {
-  }
 `;
 
 const RightSideHeader = styled.div`
