@@ -7,7 +7,6 @@ import LikeButton from "../../../../components/likeButton/LikeButton";
 
 const CardWrapper = styled.div`
   width: 100%;
-  margin-bottom: ${({ margin }) => margin || "24px"};
 
   box-shadow: 0px 4px 8px #828282;
   border-radius: 20px;
@@ -30,8 +29,8 @@ const InsideCardWrapper = styled.div`
 `;
 
 const Card1Txt = styled.span`
-  width: 240px;
-  height: 23px;
+  /* width: 100%; */
+  /* height: 23px; */
 
   font-family: "Poppins";
   font-style: normal;
@@ -42,6 +41,13 @@ const Card1Txt = styled.span`
   white-space: nowrap;
 
   color: #1c1c28;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
 `;
 
 const ButtonLikeWrapper = styled.div`

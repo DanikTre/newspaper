@@ -164,7 +164,7 @@ const initialState = {
   },
   selectedTopicId: null,
   selectedWeekId: null,
-  sideBarOpen: false,
+  sideBarOpen: true,
 };
 
 const OverallReducer = (state = initialState, action) => {

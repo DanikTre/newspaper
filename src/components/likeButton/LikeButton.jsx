@@ -29,7 +29,7 @@ const LikeButton = ({ likeState, likeCount, handleLike }) => {
   return (
     <LikeWrapper onClick={handleLike}>
       <LikeImage liked={likeState} />
-      <LikeButtonTxt>{likeCount}</LikeButtonTxt>
+      {likeCount && <LikeButtonTxt>{likeCount}</LikeButtonTxt>}
     </LikeWrapper>
   );
 };

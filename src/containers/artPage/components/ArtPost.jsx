@@ -3,12 +3,16 @@ import styled from "styled-components";
 import LikeButton from "../../../components/likeButton/LikeButton";
 
 const PostWrapper = styled.div`
-  width: 100%;
+  /* width: 100%; */
   margin: ${({ margin }) => margin || "0"};
+  padding: 24px 30px;
 
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+
+  box-shadow: 0px 3px 6px #bfbfbf;
+  border-radius: 30px;
 `;
 
 const LeftSideDiv = styled.div`
@@ -17,15 +21,17 @@ const LeftSideDiv = styled.div`
 `;
 
 const Image1 = styled.img`
-  width: 100%;
+  max-width: 100%;
+  min-width: 150px;
   border-radius: 11px;
   user-select: none;
+
+  box-shadow: 0px 3px 6px #bfbfbf;
 `;
 
 const PageTxt = styled.span`
   margin-bottom: 26px;
-  width: 197px;
-  height: 23px;
+  max-width: 200px;
 
   font-family: "Poppins";
   font-style: normal;
@@ -39,11 +45,11 @@ const PageTxt = styled.span`
 `;
 
 const ButtonsRow = styled.div`
-  width: 330px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
 `;
 
 const ButtonsRowTxt = styled.span`
@@ -64,7 +70,8 @@ const LikeButtonWrapper = styled.div``;
 
 const TextRow = styled.div`
   margin: 0 0 38px 0;
-  width: 100%;
+  max-width: 100%;
+  min-width: 200px;
 
   font-family: "Poppins";
   font-style: normal;
@@ -75,6 +82,13 @@ const TextRow = styled.div`
   letter-spacing: 0.2px;
 
   color: #3a4159;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  line-clamp: 7;
+  -webkit-box-orient: vertical;
 `;
 
 const RightSideDiv = styled.div`

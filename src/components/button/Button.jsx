@@ -25,7 +25,7 @@ const ButtonWrapper = styled.button`
   background: none;
 
   &:hover {
-    font-weight: 700;
+    /* font-weight: 700; */
     color: #5a75cb;
     border: 2px solid #5a75cb;
   }

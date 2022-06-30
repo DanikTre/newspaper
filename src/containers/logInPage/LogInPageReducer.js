@@ -118,18 +118,6 @@ const LogInPageReducer = (state = initialState, action) => {
           }
         } else if (state.logIn.emailState) {
           if (state.logIn.passwordText === state.preLogInUser.password) {
-            alert("yar logged");
-            // return {
-            //   ...state,
-            //   logIn: {
-            //     ...state.logIn,
-            //     logInState: true,
-            //     nextButtonText: "Next",
-            //     emailState: false,
-            //     passwordState: false,
-            //   },
-            // };
-
             return {
               ...state,
               currentUser: { ...state.preLogInUser },

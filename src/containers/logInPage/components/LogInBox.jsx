@@ -1,8 +1,10 @@
+import { Navigate } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../../components/button/Button";
+import { getPath, VIEW } from "../../../routes/paths";
 
-import ShowPasswordIcon1 from "./assets/show-password-icon-eye-symbol-vector-vision-hide-from-watch-icon-secret-view-web-design-element_87543-8293 copy2.jpg";
-import ShowPasswordIcon2 from "./assets/show-password-icon-eye-symbol-vector-vision-hide-from-watch-icon-secret-view-web-design-element_87543-8293 copy.jpg";
+import ShowPasswordIcon1 from "./assets/blind.png";
+import ShowPasswordIcon2 from "./assets/show-password.png";
 
 // import stockAvatarImg from "../../../components/SideBar/24-248253_user-profile-default-image-png-clipart-png-download.png";
 
@@ -66,46 +68,52 @@ const InfoText = styled.span`
 `;
 
 const NameInputWrapper = styled.div`
-  margin-top: 30px;
-  width: 350px;
+  position: relative;
 
   display: flex;
   align-items: center;
 
-  border: 1px solid #8f93a1;
-  box-sizing: border-box;
-  border-radius: 8px;
+  margin-top: 26px;
+  width: 350px;
 `;
 
 const NameInput = styled.input`
-  margin-left: 10px;
+  position: relative;
 
-  width: 95%;
-  height: 50px;
+  padding: 20px 10px 20px 10px;
+
+  width: 100%;
+  /* height: 50px; */
   font-family: "Poppins";
-  font-style: normal;
+  font-style: ${({ emailTextAreaBorderState }) =>
+    emailTextAreaBorderState ? "italic" : "normal"};
   font-weight: 400;
   font-size: 15px;
   line-height: 130%;
 
-  letter-spacing: 0.2px;
-  border: none;
-  border-bottom: ${({ emailTextAreaBorderState }) =>
-    emailTextAreaBorderState ? "1px dashed red" : "none"};
+  letter-spacing: 0.3px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: ${({ emailTextAreaBorderState }) =>
+    emailTextAreaBorderState ? "1px solid red" : "1px solid #8f93a1"};
+  color: #3a415991;
   background: none;
-
-  ::placeholder {
-    color: #cbced8;
+  appearance: none;
+  &::placeholder {
+    color: ${({ emailTextAreaBorderState }) =>
+      emailTextAreaBorderState ? "#e65a55" : "#cbced8"};
     user-select: none;
   }
-  color: #3a415991;
+
   outline: none;
 `;
 
 const ShowPassImage = styled.img`
-  margin-right: 8px;
-  height: 20px;
-  width: 20px;
+  position: absolute;
+
+  right: 10px;
+  height: 22px;
+  width: 22px;
 
   border: none;
   box-sizing: border-box;
@@ -113,7 +121,7 @@ const ShowPassImage = styled.img`
 `;
 
 const ForgotEmailText = styled.span`
-  margin-top: 8px;
+  margin-top: 14px;
 
   font-family: "Poppins";
   font-style: normal;
@@ -131,7 +139,7 @@ const ForgotEmailText = styled.span`
 `;
 
 const ButtonsWrap = styled.div`
-  margin-top: 40px;
+  margin-top: 36px;
   height: 34px;
   width: 350px;
   display: flex;
@@ -139,8 +147,15 @@ const ButtonsWrap = styled.div`
 `;
 
 const StyledNameInput = styled(NameInput)`
-  border-bottom: ${({ passwordTextAreaBorderState }) =>
-    passwordTextAreaBorderState ? "1px dashed red" : "none"};
+  font-style: ${({ passwordTextAreaBorderState }) =>
+    passwordTextAreaBorderState ? "italic" : "normal"};
+  border: ${({ passwordTextAreaBorderState }) =>
+    passwordTextAreaBorderState ? "1px solid red" : "1px solid #8f93a1"};
+  &::placeholder {
+    color: ${({ passwordTextAreaBorderState }) =>
+      passwordTextAreaBorderState ? "#e65a55" : "#cbced8"};
+  }
+  padding-right: 32px;
 `;
 
 const LogInBox = ({
@@ -152,6 +167,10 @@ const LogInBox = ({
   backButtonPressLogIn,
   showPasswordToggle,
 }) => {
+  const handlePasswordToggle = (e) => {
+    showPasswordToggle();
+  };
+
   const onEmailTextChange = (e) => {
     let text = e.target.value;
     updateEmailTextLogIn(text);
@@ -168,59 +187,75 @@ const LogInBox = ({
   };
   const onEnterPassText = (e) => {
     if (e.key === "Enter") {
+      nextButtonPressLogIn();
     }
   };
-
   return (
-    <LogInBoxWrapper>
-      <LogInBoxCenteredWrapper>
-        <LogoAvatarWrapper>
-          <H2Text>Sign In</H2Text>
-          {preLogInUser.avatarImg && (
-            <AccountImg src={preLogInUser.avatarImg} alt="Account Image" />
+    <>
+      {logIn.logInState && <Navigate to={getPath(VIEW.MAIN)} />}
+      <LogInBoxWrapper>
+        <LogInBoxCenteredWrapper>
+          <LogoAvatarWrapper>
+            <H2Text>Sign In</H2Text>
+            {preLogInUser.avatarImg && (
+              <AccountImg src={preLogInUser.avatarImg} alt="Account Image" />
+            )}
+          </LogoAvatarWrapper>
+          {logIn.emailState && (
+            <InfoText>Hi, {preLogInUser.firstName}</InfoText>
           )}
-        </LogoAvatarWrapper>
-        {logIn.emailState && <InfoText>Hi, {preLogInUser.firstName}</InfoText>}
-        <NameInputWrapper>
-          <NameInput
-            type="text"
-            spellcheck="false"
-            placeholder="  Name or Email"
-            onChange={onEmailTextChange}
-            value={logIn.emailText}
-            onKeyUp={onEnterEmailText}
-            emailTextAreaBorderState={logIn.emailTextAreaBorderState}
-          />
-        </NameInputWrapper>
-        {logIn.emailState && (
           <NameInputWrapper>
-            <StyledNameInput
-              type={logIn.showPasswordState ? "password" : "text"}
+            <NameInput
+              type="text"
               spellcheck="false"
-              placeholder="  Password"
-              onChange={onPassTextChange}
-              value={logIn.passwordText}
-              onKeyUp={onEnterPassText}
-              passwordTextAreaBorderState={logIn.passwordTextAreaBorderState}
-            />
-            <ShowPassImage
-              src={
-                logIn.showPasswordState ? ShowPasswordIcon1 : ShowPasswordIcon2
+              placeholder="Name or Email"
+              onChange={onEmailTextChange}
+              value={logIn.emailText}
+              onKeyUp={onEnterEmailText}
+              emailTextAreaBorderState={
+                logIn.emailTextAreaBorderState && logIn.emailText.length === 0
               }
-              alt="Show Password Image"
-              onClick={showPasswordToggle}
+              autoFocus={true}
             />
           </NameInputWrapper>
-        )}
-        <ForgotEmailText>Forgot your Email?</ForgotEmailText>
-        <ButtonsWrap>
-          <Button onClick={backButtonPressLogIn}>
-            {logIn.createAccountButtonText}
-          </Button>
-          <Button onClick={nextButtonPressLogIn}>{logIn.nextButtonText}</Button>
-        </ButtonsWrap>
-      </LogInBoxCenteredWrapper>
-    </LogInBoxWrapper>
+          {logIn.emailState && (
+            <NameInputWrapper>
+              <StyledNameInput
+                type={logIn.showPasswordState ? "password" : "text"}
+                spellcheck="false"
+                placeholder="Password"
+                onChange={onPassTextChange}
+                value={logIn.passwordText}
+                onKeyUp={onEnterPassText}
+                passwordTextAreaBorderState={
+                  logIn.passwordTextAreaBorderState &&
+                  logIn.passwordText.length === 0
+                }
+                autoFocus={true}
+              />
+              <ShowPassImage
+                src={
+                  logIn.showPasswordState
+                    ? ShowPasswordIcon1
+                    : ShowPasswordIcon2
+                }
+                alt="Show Password Image"
+                onClick={handlePasswordToggle}
+              />
+            </NameInputWrapper>
+          )}
+          <ForgotEmailText>Forgot your Email?</ForgotEmailText>
+          <ButtonsWrap>
+            <Button onClick={backButtonPressLogIn}>
+              {logIn.createAccountButtonText}
+            </Button>
+            <Button onClick={nextButtonPressLogIn}>
+              {logIn.nextButtonText}
+            </Button>
+          </ButtonsWrap>
+        </LogInBoxCenteredWrapper>
+      </LogInBoxWrapper>
+    </>
   );
 };
 

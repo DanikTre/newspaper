@@ -12,14 +12,15 @@ export const CenteredWrapper = styled.div`
 
 export const CardsWrapper = styled.div`
   display: flex;
+
   align-items: flex-start;
   justify-content: center;
-  flex-wrap: wrap;
   margin-top: 48px;
 `;
 
 export const ColumnCardWrapper = styled.div`
   width: ${({ width }) => width};
+  gap: ${({ gap }) => gap || "20px"};
   margin-right: ${(props) => props.margin};
 
   display: flex;

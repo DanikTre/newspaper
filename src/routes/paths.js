@@ -2,6 +2,7 @@ export const VIEW = Object.freeze({
   MAIN: "MAIN",
   CARD: "CARD",
   ART: "ART",
+  TEST: "TEST",
   LOGIN: "LOGIN",
   REDIRECT: "REDIRECT",
 });
@@ -10,6 +11,7 @@ export const PATHS = Object.freeze({
   [VIEW.MAIN]: "/main",
   [VIEW.CARD]: "/card/:id",
   [VIEW.ART]: "/art/:id",
+  [VIEW.TEST]: "/test",
   [VIEW.LOGIN]: "/login",
   [VIEW.REDIRECT]: "/",
 });

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import stockAvatarImg from "../24-248253_user-profile-default-image-png-clipart-png-download.png";
+import defaultAvatarImg from "../user copy.png";
 
 const AccountImgNameWrapper = styled.div`
   width: 142px;
@@ -14,13 +14,13 @@ const AccountImgNameWrapper = styled.div`
 `;
 
 const AccountImg = styled.img`
-  height: 32px;
-  width: 32px;
+  height: 33px;
+  width: 33px;
   border-radius: 32px;
   user-select: none;
 
   &:hover {
-    box-shadow: 0px 2px 1px #828282;
+    box-shadow: 1px 1px 10px #a19d9d;
   }
 `;
 
@@ -36,11 +36,12 @@ const AccountName = styled.span`
   text-align: center;
   letter-spacing: 0.2px;
 
-  color: #3a4159;
+  color: ${({ name }) => (name ? "#3a4159" : "#a19d9d")};
 
   border: none;
   &:hover {
-    font-weight: 450;
+    font-weight: ${({ name }) => (name ? "400" : "450")};
+    text-shadow: ${({ name }) => (name ? "none" : "2px 8px 2px #e0e0e0")};
   }
 `;
 
@@ -48,10 +49,10 @@ function AccountImgName({ avatarImg, name }) {
   return (
     <AccountImgNameWrapper>
       <AccountImg
-        src={avatarImg !== undefined ? avatarImg : stockAvatarImg}
+        src={avatarImg !== undefined ? avatarImg : defaultAvatarImg}
         alt="Account Image"
       />
-      <AccountName>
+      <AccountName name={name}>
         {name !== "undefined undefined" ? name : "User"}
       </AccountName>
     </AccountImgNameWrapper>
