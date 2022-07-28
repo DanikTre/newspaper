@@ -21,7 +21,7 @@ const StyledLink = styled(Link)`
 function SideBar({ avatarImg, name, logInState, logOut }) {
   return (
     <CenteredWrapper>
-      <StyledLink to={!logInState && "/login"}>
+      <StyledLink to={!logInState && "/newspaper/login"}>
         <AccountImgName avatarImg={avatarImg} name={name} />
       </StyledLink>
       <NavBar />
