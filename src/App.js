@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import smoothscroll from "smoothscroll-polyfill";
+// import smoothscroll from "smoothscroll-polyfill";
 import {
   Wrapper,
   LeftSideWrapper,
@@ -23,9 +23,9 @@ function App({ currentUser, sideBarOpen, logInState, logOut }) {
       leftSideRef.current.scroll({ top: 0, left: 0, behavior: "instant" });
   }, [location]);
 
-  useEffect(() => {
-    smoothscroll.polyfill();
-  });
+  // useEffect(() => {
+  //   smoothscroll.polyfill();
+  // });
 
   return (
     <Wrapper>
