@@ -53,7 +53,7 @@ const H1Text = ({
     <ArrowTxtWrapper>
       {arrowdisplay && (
         <ArrowWrapper width={fontSize} height={fontSize}>
-          <StyledLink to={linkTo || "/"}>
+          <StyledLink to={linkTo || "/newspaper/"}>
             <Arrow />
           </StyledLink>
         </ArrowWrapper>
