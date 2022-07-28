@@ -1,0 +1,41 @@
+{
+  "files": {
+    "main.css": "/DanikTre/newspaper/static/css/main.872e76b5.css",
+    "main.js": "/DanikTre/newspaper/static/js/main.bc81a9d0.js",
+    "static/js/787.d5ee595e.chunk.js": "/DanikTre/newspaper/static/js/787.d5ee595e.chunk.js",
+    "static/media/CardImg10.jpg": "/DanikTre/newspaper/static/media/CardImg10.dcca6dfc2627ad07f659.jpg",
+    "static/media/PageImg2.jpg": "/DanikTre/newspaper/static/media/PageImg2.45daad5687745e096195.jpg",
+    "static/media/CardImg8.jpg": "/DanikTre/newspaper/static/media/CardImg8.bdfcb0682c57424ed227.jpg",
+    "static/media/CardImg9.jpg": "/DanikTre/newspaper/static/media/CardImg9.b10bbbcde7fec34c2600.jpg",
+    "static/media/PageImg3.jpg": "/DanikTre/newspaper/static/media/PageImg3.df68f18b1614b81f7839.jpg",
+    "static/media/CardImg2.png": "/DanikTre/newspaper/static/media/CardImg2.c9928f7a5ea1a46cef49.png",
+    "static/media/PageImg1.png": "/DanikTre/newspaper/static/media/PageImg1.c9928f7a5ea1a46cef49.png",
+    "static/media/Img3.jpg": "/DanikTre/newspaper/static/media/Img3.46f5b092396e68a14489.jpg",
+    "static/media/Img1.png": "/DanikTre/newspaper/static/media/Img1.957fea9a164ba5c9db86.png",
+    "static/media/birch-tree.jpeg": "/DanikTre/newspaper/static/media/birch-tree.6033c182d0d3f1a7bcc1.jpeg",
+    "static/media/CardImg5.png": "/DanikTre/newspaper/static/media/CardImg5.4f872ae5826e2313325c.png",
+    "static/media/Img2.png": "/DanikTre/newspaper/static/media/Img2.5a7fed3d31f93a5a1176.png",
+    "static/media/IMG_5141.jpeg": "/DanikTre/newspaper/static/media/IMG_5141.3faa59eb5ed1ad6a1501.jpeg",
+    "static/media/CardImg1.png": "/DanikTre/newspaper/static/media/CardImg1.413a80cb867a69480b64.png",
+    "static/media/IMG_5141 copy.jpeg": "/DanikTre/newspaper/static/media/IMG_5141 copy.2ebbeb75c9ebba03f142.jpeg",
+    "static/media/CardImg4.png": "/DanikTre/newspaper/static/media/CardImg4.fbde724cb25e226be508.png",
+    "static/media/AvatarImg3.jpg": "/DanikTre/newspaper/static/media/AvatarImg3.1af53992cb6052c21a5a.jpg",
+    "static/media/CardImg7.png": "/DanikTre/newspaper/static/media/CardImg7.b6c1e291ca985205de20.png",
+    "static/media/CardImg3.png": "/DanikTre/newspaper/static/media/CardImg3.a90744897b1227f3e95e.png",
+    "static/media/CardImg6.png": "/DanikTre/newspaper/static/media/CardImg6.24572fe40ea2b0e3f04d.png",
+    "static/media/AvatarImg2.png": "/DanikTre/newspaper/static/media/AvatarImg2.4336a079f54c2071b8d2.png",
+    "static/media/AvatarImg.png": "/DanikTre/newspaper/static/media/AvatarImg.a6ee8e24cbdf9621fd7d.png",
+    "static/media/user copy.png": "/DanikTre/newspaper/static/media/user copy.8d49e377c7c342895ec2.png",
+    "static/media/blind.png": "/DanikTre/newspaper/static/media/blind.4b60b171e944945fb087.png",
+    "static/media/show-password.png": "/DanikTre/newspaper/static/media/show-password.5dd8cb5c607214aa88df.png",
+    "index.html": "/DanikTre/newspaper/index.html",
+    "static/media/SearchIcon.svg": "/DanikTre/newspaper/static/media/SearchIcon.84be7a6bc2f0f76a00215e6c72211ddd.svg",
+    "main.872e76b5.css.map": "/DanikTre/newspaper/static/css/main.872e76b5.css.map",
+    "main.bc81a9d0.js.map": "/DanikTre/newspaper/static/js/main.bc81a9d0.js.map",
+    "787.d5ee595e.chunk.js.map": "/DanikTre/newspaper/static/js/787.d5ee595e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.872e76b5.css",
+    "static/js/main.bc81a9d0.js"
+  ]
+}
