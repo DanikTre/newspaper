@@ -85,12 +85,12 @@ function Header({
   return (
     <HeaderWrapper>
       <LeftSideHeader>
-        <Link to="/main" style={{ textDecoration: "none" }}>
+        <Link to="/newspaper/main" style={{ textDecoration: "none" }}>
           <LogoTxt>DIALOGUE. online</LogoTxt>
         </Link>
         {/* <ArrowTxtWrapper>
           <ArrowWrapper arrowdisplay={arrowdisplay}>
-            <Link to="/main">
+            <Link to="/newspaper/main">
               <Arrow />
             </Link>
           </ArrowWrapper>
